@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <link rel="stylesheet" href="css/my-style.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title>Access to RIPTA Bus Services</title>
+    </head>
+    <body><a href="../../index.html" style="position:fixed;top:14px;left:14px;z-index:99999;font:12px/1 -apple-system,'Segoe UI',sans-serif;letter-spacing:.04em;text-transform:uppercase;background:#0B0D0E;color:#ECE6D9;padding:8px 12px;border:1px solid #E2661F;text-decoration:none;border-radius:2px;box-shadow:0 2px 10px rgba(0,0,0,.35);">&#8592; Portfolio</a>
+
+        <div class="leaflet-top leaflet-left title-background">
+                <div class="title-box">
+                    <div class="map-title">Access to RIPTA Bus Services</div>
+                </div>
+        </div>
+
+        <div id="infoPanel" class="leaflet-bottom leaflet-right">
+                <h2><center>Info</center></h2>
+                <p class="text-center hidden-xs">This shows how much of a Census Block Group is withing 1/4th a mile of a RIPTA bus stop.</p>
+                <p class="text-center hidden-xs">Click on a Census Block to see the exact percentage of land thats near a stop.</p>
+                <p class="text-center hidden-xs">Source: RIGIS</p>
+        </div>
+
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/temp_1.js"></script>
+
+        <script>
+        var map = L.map('map', {
+            attributionControl: false,
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[41.62725504299344,-71.70772345325715],[41.918731230698384,-70.9929990396566]]);
+        var hash = new L.Hash(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var overlay_OSMBW_0 = L.tileLayer('http://a.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+            opacity: 1.0
+        });
+        overlay_OSMBW_0.addTo(map);
+        map.addLayer(overlay_OSMBW_0);
+        function pop_temp_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Percent:</th>\
+                        <td>' + (feature.properties['percent'] !== null ? Autolinker.link(String(Math.round(feature.properties['percent']*100)) + "%") : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_temp_1_0(feature) {
+            if (feature.properties['percent'] >= 0.000000 && feature.properties['percent'] <= 0.100000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,251,253,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.100000 && feature.properties['percent'] <= 0.200000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(241,239,247,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.200000 && feature.properties['percent'] <= 0.300000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,224,238,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.300000 && feature.properties['percent'] <= 0.400000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,202,227,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.400000 && feature.properties['percent'] <= 0.500000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(176,175,212,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.500000 && feature.properties['percent'] <= 0.600000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(150,146,196,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.600000 && feature.properties['percent'] <= 0.700000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(124,118,182,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.700000 && feature.properties['percent'] <= 0.800000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,73,159,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.800000 && feature.properties['percent'] <= 0.900000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(85,42,145,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['percent'] >= 0.900000 && feature.properties['percent'] <= 1.000000 ) {
+                return {
+                pane: 'pane_temp_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(63,0,125,0.5019607843137255)',
+            }
+            }
+        }
+        map.createPane('pane_temp_1');
+        map.getPane('pane_temp_1').style.zIndex = 401;
+        map.getPane('pane_temp_1').style['mix-blend-mode'] = 'normal';
+        var layer_temp_1 = new L.geoJson(json_temp_1, {
+            pane: 'pane_temp_1',
+            onEachFeature: pop_temp_1,
+            style: style_temp_1_0,
+        });
+        bounds_group.addLayer(layer_temp_1);
+        map.addLayer(layer_temp_1);
+        var baseMaps = {};
+
+        L.control.attribution({position: 'bottomleft'}).addTo(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+
+        L.control.layers(baseMaps,{'Backround<br /><table><tr><td style="text-align: center;"><img src="legend/temp_1_0000100.png" /></td><td>  0 - 10% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0100201.png" /></td><td> 10 - 20% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0200302.png" /></td><td> 20 - 30% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0300403.png" /></td><td> 30 - 40% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0400504.png" /></td><td> 40 - 50% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0500605.png" /></td><td> 50 - 60% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0600706.png" /></td><td> 60 - 70% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0700807.png" /></td><td> 70 - 80% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0800908.png" /></td><td> 80 - 90% </td></tr><tr><td style="text-align: center;"><img src="legend/temp_1_0901009.png" /></td><td> 90 - 100% </td></tr></table>': overlay_OSMBW_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Maps and data studies by George Willis — geodata, spatial statistics and applied machine learning.">
+<meta name="author" content="George Willis">
+<title>Work — George Willis</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favico/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="../img/favico/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../img/favico/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../img/favico/manifest.json">
+<link rel="mask-icon" href="../img/favico/safari-pinned-tab.svg" color="#E2661F">
+<meta name="theme-color" content="#0B0D0E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__row">
+    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong><span>/</span>Geodata</a>
+    <button class="masthead__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav class="masthead__nav">
+      <a href="../index.html">Home</a>
+      <a href="../portfolio/index.html" aria-current="page">Work</a>
+      <a href="../publications/index.html">Publications</a>
+      <a href="../writing/index.html">Writing</a>
+      <a href="../about/index.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section--tight" style="padding-top:56px;">
+  <div class="wrap">
+    <p class="kicker">Full index</p>
+    <h1 style="font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,52px); margin-top:14px; max-width:18ch;">Maps &amp; data studies</h1>
+    <p style="color:var(--dust); max-width:56ch; margin-top:16px; font-size:15.5px;">Eleven projects, kept because they hold up: interactive maps built in Leaflet and QGIS, and statistical work in R and Python. Older or unfinished pieces have been retired rather than padded out here.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="filters" data-filters>
+      <button class="is-active" data-filter="all">All work</button>
+      <button data-filter="map">Maps</button>
+      <button data-filter="data">Data studies</button>
+    </div>
+
+    <div class="index-list">
+
+      <a class="index-row" data-cat="map" href="maps/ripta-access/index.html">
+        <span class="index-row__tag">Map</span>
+        <span class="index-row__body">
+          <h3>Access to RIPTA bus services</h3>
+          <p>Service-area coverage and gaps across Rhode Island's public transit network — stops, routes and walk-access buffers layered with qgis2web.</p>
+        </span>
+        <span class="index-row__meta">Leaflet · QGIS</span>
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
+            <line x1="6" y1="46" x2="58" y2="46"/><line x1="6" y1="46" x2="18" y2="24"/><line x1="18" y1="24" x2="40" y2="18"/><line x1="40" y1="18" x2="56" y2="30"/>
+            <circle cx="6" cy="46" r="2.4" fill="currentColor"/><circle cx="18" cy="24" r="2.4" fill="currentColor"/><circle cx="40" cy="18" r="2.4" fill="currentColor"/><circle cx="56" cy="30" r="2.4" fill="currentColor"/>
+            <circle cx="40" cy="18" r="10" opacity="0.35"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="index-row" data-cat="map" href="maps/dunkin-isochrone/index.html">
+        <span class="index-row__tag">Map</span>
+        <span class="index-row__body">
+          <h3>Distance to Dunkin' — a Rhode Island isochrone</h3>
+          <p>How far the nearest Dunkin' actually is, mapped as a full-screen distance surface across the state.</p>
+        </span>
+        <span class="index-row__meta">Leaflet</span>
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
+            <circle cx="26" cy="34" r="3" fill="currentColor"/>
+            <circle cx="26" cy="34" r="11" opacity="0.55"/>
+            <circle cx="26" cy="34" r="19" opacity="0.35"/>
+            <circle cx="26" cy="34" r="27" opacity="0.18"/>
+            <circle cx="44" cy="20" r="2" fill="currentColor" opacity="0.8"/>
+            <circle cx="50" cy="42" r="2" fill="currentColor" opacity="0.8"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="index-row" data-cat="map" href="../maps/ri-history-compare/index.html">
+        <span class="index-row__tag">Map</span>
+        <span class="index-row__body">
+          <h3>Historical Rhode Island — a swipe comparison</h3>
+          <p>Side-by-side historical and modern basemaps of Rhode Island, dragged open with a swipe control.</p>
+        </span>
+        <span class="index-row__meta">Leaflet · Esri</span>
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
+            <rect x="8" y="12" width="48" height="40" opacity="0.3"/>
+            <path d="M32 12 V52" />
+            <circle cx="32" cy="32" r="6" fill="var(--ink)" stroke="currentColor"/>
+            <path d="M29 32 l-3 0 M35 32 l3 0" />
+          </svg>
+        </span>
+      </a>
+
+      <a class="index-row" data-cat="map" href="R/Step1.html">
+        <span class="index-row__tag">Map · Data</span>
+        <span class="index-row__body">
+          <h3>House prices &amp; London rail access</h3>
+          <p>Price-per-square-foot across London mapped against proximity to Liverpool Street, Waterloo and Victoria.</p>
+        </span>
+        <span class="index-row__meta">R · Leaflet</span>
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
+            <circle cx="32" cy="32" r="4" fill="currentColor"/>
+            <circle cx="32" cy="32" r="12" opacity="0.55"/>
+            <circle cx="32" cy="32" r="20" opacity="0.3"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="index-row" data-cat="data" href="R/Animated_NTL.html">
+        <span class="index-row__tag">Data · Remote sensing</span>
+        <span class="index-row__body">
+          <h3>Animated nightlights — China, 2000–2019</h3>
+          <p>Twenty years of night-time light emissions stacked into an animated growth map of urban China, using the extended NTL series.</p>
+        </span>
+        <span class="index-row__meta">R · raster</span>
+        <span class="index-row__preview"><img src="../img/thumbs/Animated_NTL.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" data-cat="data" href="R/Hyperlinks.html">
+        <span class="index-row__tag">Data · Published</span>
+        <span class="index-row__body">
+          <h3>Regional hyperlinks &amp; trade flows</h3>
+          <p>Web hyperlink data between UK regions, used to model and predict inter-regional trade. Published in the <em>Annals of the AAG</em>.</p>
+        </span>
+        <span class="index-row__meta">R · NUTS2</span>
+        <span class="index-row__preview"><img src="../img/thumbs/Hyperlinks.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" data-cat="data" href="R/London_locations.html">
+        <span class="index-row__tag">Data</span>
+        <span class="index-row__body">
+          <h3>Location choice — London</h3>
+          <p>Travel-time coverage from London Bridge, Waterloo and Victoria compared across the full public transport network.</p>
+        </span>
+        <span class="index-row__meta">R · isochrones</span>
+        <span class="index-row__preview"><img src="../img/thumbs/London_locations.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" data-cat="data" href="R/Random_Forest.html">
+        <span class="index-row__tag">Data · Methods</span>
+        <span class="index-row__body">
+          <h3>Random forest — variable importance</h3>
+          <p>Diagnostic summaries of minimal tree depth and split importance across a spatial random forest model.</p>
+        </span>
+        <span class="index-row__meta">R · randomForestExplainer</span>
+        <span class="index-row__preview"><img src="../img/thumbs/Random_Forest.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" data-cat="data" href="python-notebooks/Urban_extent.html">
+        <span class="index-row__tag">Data · GIS</span>
+        <span class="index-row__body">
+          <h3>Finding the urban extent — Beijing</h3>
+          <p>Combining night-time light and point-of-interest density with kernel density estimation to delineate Beijing's built-up area.</p>
+        </span>
+        <span class="index-row__meta">ArcPy · ArcMap</span>
+        <span class="index-row__preview"><img src="../img/thumbs/Urban_extent.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" data-cat="data" href="misc/AB_test.html">
+        <span class="index-row__tag">Data · Methods</span>
+        <span class="index-row__body">
+          <h3>A/B testing, worked example</h3>
+          <p>A repeatable split-testing workflow in R, built to show how to read significance rather than just report it.</p>
+        </span>
+        <span class="index-row__meta">R</span>
+        <span class="index-row__preview"><img src="../img/thumbs/AB_test.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" data-cat="data" href="misc/Data_processing.html">
+        <span class="index-row__tag">Data · Pipeline</span>
+        <span class="index-row__body">
+          <h3>Hyperlink data processing</h3>
+          <p>Matching the JISC UK Web Domain hyperlink dataset to postcodes and regions — the pipeline behind the regional hyperlinks study.</p>
+        </span>
+        <span class="index-row__meta">R</span>
+        <span class="index-row__preview"><img src="../img/thumbs/Data_process.jpg" alt="" loading="lazy"></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer__row">
+    <span class="footer__mark">George Willis — Geodata &amp; Spatial Analysis</span>
+    <div class="footer__links">
+      <a href="mailto:gcwillis14@gmail.com">Email</a>
+      <a href="https://github.com/gcwillis14-coder" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/gcwillis14-coder/portfolio-home" target="_blank" rel="noopener">Source</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/main.js"></script>
+</body>
+</html>

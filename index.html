@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="George Willis — geodata, spatial statistics and applied machine learning. Maps and research on how places grow, shrink and connect.">
+<meta name="author" content="George Willis">
+<title>George Willis — Geodata &amp; Spatial Analysis</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="img/favico/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="img/favico/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="img/favico/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="img/favico/manifest.json">
+<link rel="mask-icon" href="img/favico/safari-pinned-tab.svg" color="#E2661F">
+<meta name="theme-color" content="#0B0D0E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__row">
+    <a href="index.html" class="masthead__mark"><strong>George Willis</strong><span>/</span>Geodata</a>
+    <button class="masthead__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav class="masthead__nav">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="portfolio/index.html">Work</a>
+      <a href="publications/index.html">Publications</a>
+      <a href="writing/index.html">Writing</a>
+      <a href="about/index.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg" role="img" aria-label="Nighttime-lights map of China, from the Animated Nightlights project"></div>
+  <div class="hero__scrim"></div>
+  <div class="wrap hero__inner">
+    <p class="kicker">Geodata · Spatial Statistics · Applied ML</p>
+    <h1>Every city leaves a signature in the data.</h1>
+    <p class="hero__dek">Applied research in geodata and spatial statistics — from nighttime-light growth models in Chinese cities to hyperlink networks that predict regional trade. Built in R, Python and GIS.</p>
+    <div class="hero__actions">
+      <a href="portfolio/index.html" class="btn">View the work →</a>
+      <a href="about/index.html" class="link-arrow">About George →</a>
+    </div>
+  </div>
+</section>
+
+<section class="ticker">
+  <div class="wrap ticker__row">
+    <div class="ticker__item"><span class="ticker__num">11</span><span class="ticker__label">Projects</span></div>
+    <div class="ticker__item"><span class="ticker__num">4</span><span class="ticker__label">Maps</span></div>
+    <div class="ticker__item"><span class="ticker__num">7</span><span class="ticker__label">Data studies</span></div>
+    <div class="ticker__item"><span class="ticker__num">2</span><span class="ticker__label">Publications</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <a href="portfolio/index.html" class="section-head__link">Full index →</a>
+    </div>
+
+    <div class="index-list">
+
+      <a class="index-row" href="portfolio/maps/ripta-access/index.html">
+        <span class="index-row__tag">Map</span>
+        <span class="index-row__body">
+          <h3>Access to RIPTA bus services</h3>
+          <p>Service-area coverage and gaps across Rhode Island's public transit network, built with qgis2web.</p>
+        </span>
+        <span class="index-row__meta">Leaflet · QGIS</span>
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
+            <line x1="6" y1="46" x2="58" y2="46"/><line x1="6" y1="46" x2="18" y2="24"/><line x1="18" y1="24" x2="40" y2="18"/><line x1="40" y1="18" x2="56" y2="30"/>
+            <circle cx="6" cy="46" r="2.4" fill="currentColor"/><circle cx="18" cy="24" r="2.4" fill="currentColor"/><circle cx="40" cy="18" r="2.4" fill="currentColor"/><circle cx="56" cy="30" r="2.4" fill="currentColor"/>
+            <circle cx="40" cy="18" r="10" opacity="0.35"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="index-row" href="portfolio/R/Animated_NTL.html">
+        <span class="index-row__tag">Data · Remote sensing</span>
+        <span class="index-row__body">
+          <h3>Animated nightlights — China, 2000–2019</h3>
+          <p>Twenty years of night-time light emissions stacked into an animated growth map of urban China.</p>
+        </span>
+        <span class="index-row__meta">R · raster</span>
+        <span class="index-row__preview"><img src="img/thumbs/Animated_NTL.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" href="portfolio/R/Hyperlinks.html">
+        <span class="index-row__tag">Data · Published</span>
+        <span class="index-row__body">
+          <h3>Regional hyperlinks &amp; trade flows</h3>
+          <p>Using web hyperlink data between UK regions to model and predict inter-regional trade. Published in the <em>Annals of the AAG</em>.</p>
+        </span>
+        <span class="index-row__meta">R · NUTS2</span>
+        <span class="index-row__preview"><img src="img/thumbs/Hyperlinks.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" href="portfolio/R/Step1.html">
+        <span class="index-row__tag">Map · Data</span>
+        <span class="index-row__body">
+          <h3>House prices &amp; London rail access</h3>
+          <p>Price-per-square-foot mapped against proximity to London terminus stations.</p>
+        </span>
+        <span class="index-row__meta">R · Leaflet</span>
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
+            <circle cx="32" cy="32" r="4" fill="currentColor"/>
+            <circle cx="32" cy="32" r="12" opacity="0.55"/>
+            <circle cx="32" cy="32" r="20" opacity="0.3"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="index-row" href="portfolio/R/Random_Forest.html">
+        <span class="index-row__tag">Data · Methods</span>
+        <span class="index-row__body">
+          <h3>Random forest — variable importance</h3>
+          <p>Diagnostic summaries of tree depth and split importance across a spatial random forest.</p>
+        </span>
+        <span class="index-row__meta">R · randomForestExplainer</span>
+        <span class="index-row__preview"><img src="img/thumbs/Random_Forest.jpg" alt="" loading="lazy"></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Publications</h2>
+      <a href="publications/index.html" class="section-head__link">All publications →</a>
+    </div>
+    <div class="clip-list">
+      <div class="clip">
+        <span class="clip__year">2022</span>
+        <div>
+          <h3>Using the web to predict regional trade flows</h3>
+          <p>Data extraction, modelling and validation of hyperlink networks as a proxy for inter-regional trade. With Emmanouil Tranos and André Carrascal-Incera.</p>
+          <span class="clip__cite">Tranos, Carrascal-Incera &amp; Willis — Annals of the American Association of Geographers, 2022</span>
+        </div>
+      </div>
+      <div class="clip">
+        <span class="clip__year">2021</span>
+        <div>
+          <h3>Using "Big Data" to understand the impacts of Uber on taxis in New York City</h3>
+          <p>Time-series modelling of Uber's effect on the New York yellow-taxi market, using NYC TLC and New York Times API data. With Emmanouil Tranos.</p>
+          <span class="clip__cite">Willis &amp; Tranos — Travel Behaviour and Society, 22: 94–107, 2021</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Writing</h2>
+      <a href="writing/index.html" class="section-head__link">Visit the writing index →</a>
+    </div>
+    <div class="dispatch">
+      <span class="dispatch__mark">First dispatch in preparation</span>
+      <h3>Notes on methods, mapping and the odd dead end</h3>
+      <p>Longer-form write-ups on the work above — what the models got wrong, and what the maps don't show. Nothing published here yet.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer__row">
+    <span class="footer__mark">George Willis — Geodata &amp; Spatial Analysis</span>
+    <div class="footer__links">
+      <a href="mailto:gcwillis14@gmail.com">Email</a>
+      <a href="https://github.com/gcwillis14-coder" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/gcwillis14-coder/portfolio-home" target="_blank" rel="noopener">Source</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
