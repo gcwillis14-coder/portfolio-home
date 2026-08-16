@@ -69,12 +69,12 @@
     <div class="index-list">
 
       <a class="index-row" href="https://gcwillis14-coder.github.io/gigradar/" target="_blank" rel="noopener">
-        <span class="index-row__tag">Full-stack · Spatial AI</span>
+        <span class="index-row__tag">Full-Stack GIS · Spatial AI</span>
         <span class="index-row__body">
-          <h3>GigRadar — A slightly obsessive London gig monitor</h3>
-          <p>A map-led spatial engine for figuring out exactly when a pub backroom in Hackney is about to sell out. Sweeps 100+ grassroots venues, calculates urgency, and forces an AI vision model to read badly designed gig flyers so you don't have to.</p>
+          <h3>GigRadar — Live Music Radar &amp; Venue Intelligence</h3>
+          <p>A spatial discovery engine monitoring 100+ London grassroots venues. Integrates automated ticketing ingestion, semantic deduplication via vector embeddings, and local vision extraction for promotional event media.</p>
         </span>
-        <span class="index-row__meta">SvelteKit · pgvector · FastAPI · Leaflet</span>
+        <span class="index-row__meta">Python · FastAPI · Ollama · pgvector</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <circle cx="32" cy="32" r="24" stroke-dasharray="2 4" opacity="0.4"/>
@@ -86,49 +86,13 @@
         </span>
       </a>
 
-      <a class="index-row" href="portfolio/maps/ripta-access/index.html">
-        <span class="index-row__tag">Map</span>
-        <span class="index-row__body">
-          <h3>Access to RIPTA bus services</h3>
-          <p>Service-area coverage and gaps across Rhode Island's public transit network, built with qgis2web.</p>
-        </span>
-        <span class="index-row__meta">Leaflet · QGIS</span>
-        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
-            <line x1="6" y1="46" x2="58" y2="46"/><line x1="6" y1="46" x2="18" y2="24"/><line x1="18" y1="24" x2="40" y2="18"/><line x1="40" y1="18" x2="56" y2="30"/>
-            <circle cx="6" cy="46" r="2.4" fill="currentColor"/><circle cx="18" cy="24" r="2.4" fill="currentColor"/><circle cx="40" cy="18" r="2.4" fill="currentColor"/><circle cx="56" cy="30" r="2.4" fill="currentColor"/>
-            <circle cx="40" cy="18" r="10" opacity="0.35"/>
-          </svg>
-        </span>
-      </a>
-
-      <a class="index-row" href="portfolio/R/Animated_NTL.html">
-        <span class="index-row__tag">Data · Remote sensing</span>
-        <span class="index-row__body">
-          <h3>Animated nightlights — China, 2000–2019</h3>
-          <p>Twenty years of night-time light emissions stacked into an animated growth map of urban China.</p>
-        </span>
-        <span class="index-row__meta">R · raster</span>
-        <span class="index-row__preview"><img src="img/thumbs/Animated_NTL.jpg" alt="" loading="lazy"></span>
-      </a>
-
-      <a class="index-row" href="portfolio/R/Hyperlinks.html">
-        <span class="index-row__tag">Data · Published</span>
-        <span class="index-row__body">
-          <h3>Regional hyperlinks &amp; trade flows</h3>
-          <p>Using web hyperlink data between UK regions to model and predict inter-regional trade. Published in the <em>Annals of the AAG</em>.</p>
-        </span>
-        <span class="index-row__meta">R · NUTS2</span>
-        <span class="index-row__preview"><img src="img/thumbs/Hyperlinks.jpg" alt="" loading="lazy"></span>
-      </a>
-
       <a class="index-row" href="portfolio/R/Step1.html">
-        <span class="index-row__tag">Map · Data</span>
+        <span class="index-row__tag">Spatial Econometrics · Transit</span>
         <span class="index-row__body">
           <h3>House prices &amp; London rail access</h3>
-          <p>Price-per-square-foot mapped against proximity to London terminus stations.</p>
+          <p>Evaluating spatial decay in residential valuations against commuter transit proximity across London terminus stations.</p>
         </span>
-        <span class="index-row__meta">R · Leaflet</span>
+        <span class="index-row__meta">Python · Spatial GLM · GIS · Leaflet</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <circle cx="32" cy="32" r="4" fill="currentColor"/>
@@ -138,14 +102,44 @@
         </span>
       </a>
 
-      <a class="index-row" href="portfolio/R/Random_Forest.html">
-        <span class="index-row__tag">Data · Methods</span>
+      <a class="index-row" href="portfolio/R/Hyperlinks.html">
+        <span class="index-row__tag">Network Analysis · Published</span>
         <span class="index-row__body">
-          <h3>Random forest — variable importance</h3>
-          <p>Diagnostic summaries of tree depth and split importance across a spatial random forest.</p>
+          <h3>Regional hyperlinks &amp; trade flows</h3>
+          <p>Modelling inter-regional trade flows from UK web hyperlink networks. Validated against official economic accounts and published in the <em>Annals of the AAG</em>.</p>
         </span>
-        <span class="index-row__meta">R · randomForestExplainer</span>
-        <span class="index-row__preview"><img src="img/thumbs/Random_Forest.jpg" alt="" loading="lazy"></span>
+        <span class="index-row__meta">Python · NetworkX · Econometrics · NUTS2</span>
+        <span class="index-row__preview"><img src="img/thumbs/Hyperlinks.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" href="portfolio/R/London_locations.html">
+        <span class="index-row__tag">Isochrone Modeling · Accessibility</span>
+        <span class="index-row__body">
+          <h3>Location choice — London</h3>
+          <p>Multi-modal transit catchment and travel-time isochrones mapped from major London transit interchanges.</p>
+        </span>
+        <span class="index-row__meta">Python · GTFS · Isochrones · GIS</span>
+        <span class="index-row__preview"><img src="img/thumbs/London_locations.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" href="portfolio/python-notebooks/Urban_extent.html">
+        <span class="index-row__tag">Remote Sensing · Spatial KDE</span>
+        <span class="index-row__body">
+          <h3>Finding the urban extent — Beijing</h3>
+          <p>Delineating built-up urban boundaries through multi-source fusion of nighttime satellite imagery and point-of-interest kernel density estimates.</p>
+        </span>
+        <span class="index-row__meta">Python · ArcPy · Remote Sensing · Spatial KDE</span>
+        <span class="index-row__preview"><img src="img/thumbs/Urban_extent.jpg" alt="" loading="lazy"></span>
+      </a>
+
+      <a class="index-row" href="portfolio/R/Animated_NTL.html">
+        <span class="index-row__tag">Remote Sensing · Time Series</span>
+        <span class="index-row__body">
+          <h3>Animated nightlights — China, 2000–2019</h3>
+          <p>Harmonised 20-year satellite night-time light series capturing longitudinal spatial growth and restructuring across Chinese urban regions.</p>
+        </span>
+        <span class="index-row__meta">Python · GDAL · Raster Analysis · Time Series</span>
+        <span class="index-row__preview"><img src="img/thumbs/Animated_NTL.jpg" alt="" loading="lazy"></span>
       </a>
 
     </div>
