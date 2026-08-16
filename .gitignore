@@ -1,0 +1,11 @@
+# Local databases
+local.db
+*.db
+*.sqlite
+*.sqlite3
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
