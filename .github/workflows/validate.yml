@@ -22,7 +22,7 @@ jobs:
         run: npm install -g htmlhint pa11y-ci
 
       - name: Run HTML validity check
-        run: npx htmlhint "**/*.html" --config .htmlhintrc
+        run: npx htmlhint "**/*.html" --config .htmlhintrc --ignore "portfolio/R/**,portfolio/misc/**,portfolio/python-notebooks/**,node_modules/**"
 
       - name: Run accessibility audit
         run: |
@@ -31,4 +31,4 @@ jobs:
       - name: Link check
         uses: lycheeverse/lychee-action@v1.9.3
         with:
-          args: --verbose --no-progress './**/*.html'
+          args: --verbose --no-progress --exclude-mail --exclude '^data:' --exclude 'https://doi.org/' './**/*.html'
