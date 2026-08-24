@@ -9,12 +9,14 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
         with:
           node-version: '22'
 
@@ -25,6 +27,6 @@ jobs:
         run: npx htmlhint "**/*.html" --config .htmlhintrc --ignore "portfolio/R/**,portfolio/misc/**,portfolio/python-notebooks/**,node_modules/**"
 
       - name: Link check
-        uses: lycheeverse/lychee-action@v1.9.3
+        uses: lycheeverse/lychee-action@c053181aa0c3d17606addfe97a9075a32723548a # v1.9.3
         with:
           args: --verbose --no-progress --exclude-mail --exclude '^data:' --exclude 'https://doi.org/' './**/*.html'
