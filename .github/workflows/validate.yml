@@ -29,6 +29,6 @@ jobs:
           find . -type f -name "*.html" ! -path "*/node_modules/*" | xargs npx pa11y-ci
 
       - name: Link check
-        uses: lycheeverse/lychee-action@v1.9.3
+        uses: lycheeverse/lychee-action@v2.0.2
         with:
           args: --verbose --no-progress './**/*.html'
