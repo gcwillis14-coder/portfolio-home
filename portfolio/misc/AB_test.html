@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="George WIllis" />
+<meta name="author" content="George Willis" />
 
 <meta name="date" content="2023-01-12" />
 
-<title>A/B Testing</title>
+<title>A/B Testing &mdash; Worked Example in R</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -356,8 +356,8 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">A/B Testing</h1>
-<h4 class="author">George WIllis</h4>
+<h1 class="title toc-ignore">A/B Testing, Worked Example</h1>
+<h4 class="author">George Willis</h4>
 <h4 class="date">2023-01-12</h4>
 
 </div>
@@ -365,21 +365,8 @@ pre code {
 
 <div id="overview" class="section level3">
 <h3>Overview</h3>
-<p>The following is an example of A/B testing using R. This is for
-training purposes only and the example dataset is taken from <a href="https://github.com/etomaa/A-B-Testing/blob/master/data/Website%20Results.csv" class="uri">https://github.com/etomaa/A-B-Testing/blob/master/data/Website%20Results.csv</a>.</p>
-<p>Split testing is another name of A/B testing . It’s used online when
-one wants to test a new feature or a product. This method outlines a
-repeatable example to infer whether the new feature is worth using or
-not.</p>
-<p>Variant A is from the control group which tells the existing features
-or products on a website. Variant B is from the experimental group to
-check the new version of a feature or product to see if users like it or
-if it increases the conversions(bookings). Converted is based on the
-data set given, there are two categories defined by logical value. It’s
-going to show true when the customer completes bookings and it’s going
-to show false when the customer visits the sites but not makes a
-booking. Therefore we are looking for an increase or decrease of
-conversions with Variant B, to see how the new feature performs.</p>
+<p>A worked example of experimental split-testing (A/B testing) implemented in R, evaluated on website booking conversion data.</p>
+<p>Variant A represents the control baseline, while Variant B represents the experimental variant. The objective is to test whether observed differences in conversion rate achieve statistical significance, evaluate standard errors, and compute power analysis thresholds.</p>
 </div>
 <div id="assumptions" class="section level3">
 <h3>Assumptions</h3>

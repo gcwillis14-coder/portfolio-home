@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="George Willis — geodata, spatial statistics and applied machine learning. Maps and research on how places grow, shrink and connect.">
+<meta name="description" content="George Willis - spatial statistics, geodata, and applied machine learning. Research and software on urban change, transport accessibility, and regional trade.">
 <meta name="author" content="George Willis">
-<title>George Willis — Geodata &amp; Spatial Analysis</title>
+<title>George Willis &mdash; Geodata &amp; Spatial Analysis</title>
 
 <link rel="apple-touch-icon" sizes="180x180" href="img/favico/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="img/favico/favicon-32x32.png" sizes="32x32">
@@ -43,8 +43,8 @@
   <div class="hero__scrim"></div>
   <div class="wrap hero__inner">
     <p class="kicker">Geodata · Spatial Statistics · Applied ML</p>
-    <h1>Every city leaves a signature in the data.</h1>
-    <p class="hero__dek">Applied research in geodata and spatial statistics — from nighttime-light growth models in Chinese cities to hyperlink networks that predict regional trade. Built in R, Python and GIS.</p>
+    <h1>Maps, models, and where things happen.</h1>
+    <p class="hero__dek">I like maps, so I made maps — backed by spatial statistics, remote sensing, and applied machine learning. From two decades of city growth in China to London travel catchments and web trade networks.</p>
     <div class="hero__actions">
       <a href="portfolio/index.html" class="btn">View the work →</a>
       <a href="about/index.html" class="link-arrow">About George →</a>
@@ -70,11 +70,12 @@
 
     <div class="index-list">
 
-      <div class="index-row">
+      <a class="index-row" href="https://gcwillis14-coder.github.io/gigradar/" target="_blank" rel="noopener">
+        <span class="index-row__tag">Full-Stack GIS · Web Scraping</span>
         <span class="index-row__body">
-          <h3>GigRadar — Live Music Radar &amp; Venue Intelligence</h3>
-          <p>A spatial discovery engine monitoring 100+ London grassroots venues. Integrates automated ticketing ingestion, semantic deduplication via vector embeddings, and local vision extraction for promotional event media.</p>
-          <p style="margin-top:0.5rem; display:flex; gap:1.5rem; font-weight:500;">
+          <h3>GigRadar — London live music radar</h3>
+          <p>Automated venue scraping across 100+ London grassroots music venues, using vector embeddings for deduplication and local vision models for flyer parsing.</p>
+        </span>
         <span class="index-row__meta">Python · FastAPI · Ollama · pgvector</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
@@ -85,14 +86,15 @@
             <circle cx="48" cy="16" r="3" fill="var(--amber)"/>
           </svg>
         </span>
-      </div>
+      </a>
 
+      <a class="index-row" href="portfolio/R/Step1.html">
         <span class="index-row__tag">Spatial Econometrics · Transit</span>
         <span class="index-row__body">
           <h3>House prices &amp; London rail access</h3>
-          <p>Evaluating spatial decay in residential valuations against commuter transit proximity across London terminus stations.</p>
+          <p>Spatial decay models estimating how proximity to major London rail termini affects residential property valuations.</p>
         </span>
-        <span class="index-row__meta">Python · Spatial GLM · GIS · Leaflet</span>
+        <span class="index-row__meta">R · Spatial GLM · GIS · Leaflet</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <circle cx="32" cy="32" r="4" fill="currentColor"/>
@@ -108,17 +110,17 @@
           <h3>Regional hyperlinks &amp; trade flows</h3>
           <p>Modelling inter-regional trade flows from UK web hyperlink networks. Validated against official economic accounts and published in the <em>Annals of the AAG</em>.</p>
         </span>
-        <span class="index-row__meta">Python · NetworkX · Econometrics · NUTS2</span>
+        <span class="index-row__meta">R · Python · NetworkX · Econometrics</span>
         <span class="index-row__preview"><img src="img/thumbs/Hyperlinks.jpg" alt="" loading="lazy"></span>
       </a>
 
       <a class="index-row" href="portfolio/R/London_locations.html">
         <span class="index-row__tag">Isochrone Modeling · Accessibility</span>
         <span class="index-row__body">
-          <h3>Location choice — London</h3>
-          <p>Multi-modal transit catchment and travel-time isochrones mapped from major London transit interchanges.</p>
+          <h3>Location choice — London travel catchments</h3>
+          <p>Multi-modal transit catchments and travel-time isochrones mapped from major London rail and tube terminals.</p>
         </span>
-        <span class="index-row__meta">Python · GTFS · Isochrones · GIS</span>
+        <span class="index-row__meta">R · Leaflet · Isochrones · GIS</span>
         <span class="index-row__preview"><img src="img/thumbs/London_locations.jpg" alt="" loading="lazy"></span>
       </a>
 
@@ -126,7 +128,7 @@
         <span class="index-row__tag">Remote Sensing · Spatial KDE</span>
         <span class="index-row__body">
           <h3>Finding the urban extent — Beijing</h3>
-          <p>Delineating built-up urban boundaries through multi-source fusion of nighttime satellite imagery and point-of-interest kernel density estimates.</p>
+          <p>Delineating built-up urban boundaries by fusing nighttime satellite imagery with point-of-interest kernel density surfaces.</p>
         </span>
         <span class="index-row__meta">Python · ArcPy · Remote Sensing · Spatial KDE</span>
         <span class="index-row__preview"><img src="img/thumbs/Urban_extent.jpg" alt="" loading="lazy"></span>
@@ -136,7 +138,7 @@
         <span class="index-row__tag">Remote Sensing · Time Series</span>
         <span class="index-row__body">
           <h3>Animated nightlights — China, 2000–2019</h3>
-          <p>Harmonised 20-year satellite night-time light series capturing longitudinal spatial growth and restructuring across Chinese urban regions.</p>
+          <p>Harmonised 20-year satellite nighttime light series tracking longitudinal spatial growth and restructuring across Chinese urban regions.</p>
         </span>
         <span class="index-row__meta">Python · GDAL · Raster Analysis · Time Series</span>
         <span class="index-row__preview"><img src="img/thumbs/Animated_NTL.jpg" alt="" loading="lazy"></span>
@@ -157,18 +159,18 @@
         <span class="clip__year">2022</span>
         <div>
           <h3>Using the web to predict regional trade flows</h3>
-          <p>Data extraction, modelling and validation of hyperlink networks as a proxy for inter-regional trade. With Emmanouil Tranos and André Carrascal-Incera.</p>
+          <p>Data extraction, modelling, and validation of hyperlink networks as a proxy for inter-regional trade flows. With Emmanouil Tranos and André Carrascal-Incera.</p>
           <span class="clip__cite">Tranos, Carrascal-Incera &amp; Willis — Annals of the American Association of Geographers, 2022</span>
-          <a href="https://doi.org/10.1080/24694452.2022.2109577" class="clip__link" target="_blank" rel="noopener">DOI: 10.1080/24694452.2022.2109577</a>
+          <a href="https://doi.org/10.1080/24694452.2022.2109577" class="clip__link" target="_blank" rel="noopener">DOI: 10.1080/24694452.2022.2109577 →</a>
         </div>
       </div>
       <div class="clip">
         <span class="clip__year">2021</span>
         <div>
           <h3>Using "Big Data" to understand the impacts of Uber on taxis in New York City</h3>
-          <p>Time-series modelling of Uber's effect on the New York yellow-taxi market, using NYC TLC and New York Times API data. With Emmanouil Tranos.</p>
+          <p>Time-series modelling of Uber's effect on yellow taxi ridership in New York, using NYC TLC trip records and New York Times API data. With Emmanouil Tranos.</p>
           <span class="clip__cite">Willis &amp; Tranos — Travel Behaviour and Society, 22: 94–107, 2021</span>
-          <a href="https://doi.org/10.1016/j.tbs.2020.08.003" class="clip__link" target="_blank" rel="noopener">DOI: 10.1016/j.tbs.2020.08.003</a>
+          <a href="https://doi.org/10.1016/j.tbs.2020.08.003" class="clip__link" target="_blank" rel="noopener">DOI: 10.1016/j.tbs.2020.08.003 →</a>
         </div>
       </div>
     </div>

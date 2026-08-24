@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Maps and data studies by George Willis — geodata, spatial statistics and applied machine learning.">
+<meta name="description" content="Interactive maps, spatial data pipelines, and research studies by George Willis. Built in Python, R, QGIS, and Leaflet.">
 <meta name="author" content="George Willis">
-<title>Work — George Willis</title>
+<title>Work &mdash; George Willis</title>
 
 <link rel="apple-touch-icon" sizes="180x180" href="../img/favico/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="../img/favico/favicon-32x32.png" sizes="32x32">
@@ -39,7 +39,7 @@
   <div class="wrap">
     <p class="kicker">Full index</p>
     <h1 style="font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,52px); margin-top:14px; max-width:18ch;">Maps &amp; data studies</h1>
-    <p style="color:var(--dust); max-width:56ch; margin-top:16px; font-size:15.5px;">Eleven projects, kept because they hold up: interactive maps built in Leaflet and QGIS, and statistical work in R and Python. Older or unfinished pieces have been retired rather than padded out here.</p>
+    <p style="color:var(--dust); max-width:56ch; margin-top:16px; font-size:15.5px;">Twelve projects kept because they answer a concrete question: interactive maps, satellite image processing, and econometric models in R and Python. The rest has been retired rather than kept around as padding.</p>
   </div>
 </section>
 
@@ -54,12 +54,12 @@
     <div class="index-list">
 
       <a class="index-row" data-cat="map" href="https://gcwillis14-coder.github.io/gigradar/" target="_blank" rel="noopener">
-        <span class="index-row__tag">Full-Stack GIS · Spatial AI</span>
+        <span class="index-row__tag">Full-Stack GIS · Web Scraping</span>
         <span class="index-row__body">
-          <h3>GigRadar — Live Music Radar &amp; Venue Intelligence</h3>
-          <p>A spatial discovery engine monitoring 100+ London grassroots venues. Integrates automated ticketing ingestion, semantic deduplication via vector embeddings, and local vision extraction for promotional event media.</p>
+          <h3>GigRadar — London live music radar</h3>
+          <p>Automated venue scraping across 100+ London grassroots music venues, using vector embeddings for deduplication and local vision models for flyer parsing.</p>
         </span>
-        <span class="index-row__meta">Python · FastAPI · Ollama · pgvector</span>
+        <span class="index-row__meta">Python · FastAPI · Ollama · pgvector · Leaflet</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <polygon points="32 8, 54 50, 10 50" opacity="0.3"/>
@@ -74,9 +74,9 @@
         <span class="index-row__tag">Spatial Econometrics · Transit</span>
         <span class="index-row__body">
           <h3>House prices &amp; London rail access</h3>
-          <p>Evaluating spatial decay in residential valuations against commuter transit proximity across London terminus stations.</p>
+          <p>Spatial decay models estimating how commute distance to major London rail termini affects residential property valuations.</p>
         </span>
-        <span class="index-row__meta">Python · Spatial GLM · GIS · Leaflet</span>
+        <span class="index-row__meta">R · Spatial GLM · GIS · Leaflet</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <circle cx="32" cy="32" r="4" fill="currentColor"/>
@@ -90,19 +90,19 @@
         <span class="index-row__tag">Network Analysis · Published</span>
         <span class="index-row__body">
           <h3>Regional hyperlinks &amp; trade flows</h3>
-          <p>Modelling inter-regional trade flows from UK web hyperlink networks. Validated against official economic accounts and published in the <em>Annals of the AAG</em>.</p>
+          <p>Modelling inter-regional trade flows from UK web hyperlink graphs. Validated against official ONS economic accounts and published in the <em>Annals of the AAG</em>.</p>
         </span>
-        <span class="index-row__meta">Python · NetworkX · Econometrics · NUTS2</span>
+        <span class="index-row__meta">R · Python · NetworkX · Econometrics · NUTS2</span>
         <span class="index-row__preview"><img src="../img/thumbs/Hyperlinks.jpg" alt="" loading="lazy"></span>
       </a>
 
-      <a class="index-row" data-cat="data" href="R/London_locations.html">
+      <a class="index-row" data-cat="map" href="R/London_locations.html">
         <span class="index-row__tag">Isochrone Modeling · Accessibility</span>
         <span class="index-row__body">
-          <h3>Location choice — London</h3>
-          <p>Multi-modal transit catchment and travel-time isochrones mapped from major London transit interchanges.</p>
+          <h3>Location choice — London travel catchments</h3>
+          <p>Multi-modal transit catchments and commute-time isochrones mapped from major London rail and tube terminals.</p>
         </span>
-        <span class="index-row__meta">Python · GTFS · Isochrones · GIS</span>
+        <span class="index-row__meta">R · Leaflet · Isochrones · GIS</span>
         <span class="index-row__preview"><img src="../img/thumbs/London_locations.jpg" alt="" loading="lazy"></span>
       </a>
 
@@ -110,7 +110,7 @@
         <span class="index-row__tag">Remote Sensing · Spatial KDE</span>
         <span class="index-row__body">
           <h3>Finding the urban extent — Beijing</h3>
-          <p>Delineating built-up urban boundaries through multi-source fusion of nighttime satellite imagery and point-of-interest kernel density estimates.</p>
+          <p>Delineating built-up urban boundaries by fusing nighttime satellite imagery with point-of-interest kernel density surfaces.</p>
         </span>
         <span class="index-row__meta">Python · ArcPy · Remote Sensing · Spatial KDE</span>
         <span class="index-row__preview"><img src="../img/thumbs/Urban_extent.jpg" alt="" loading="lazy"></span>
@@ -120,19 +120,19 @@
         <span class="index-row__tag">Remote Sensing · Time Series</span>
         <span class="index-row__body">
           <h3>Animated nightlights — China, 2000–2019</h3>
-          <p>Harmonised 20-year satellite night-time light series capturing longitudinal spatial growth and restructuring across Chinese urban regions.</p>
+          <p>Harmonised 20-year satellite nighttime light time series tracking spatial growth and structural change across Chinese urban regions.</p>
         </span>
         <span class="index-row__meta">Python · GDAL · Raster Analysis · Time Series</span>
         <span class="index-row__preview"><img src="../img/thumbs/Animated_NTL.jpg" alt="" loading="lazy"></span>
       </a>
 
       <a class="index-row" data-cat="data" href="R/Random_Forest.html">
-        <span class="index-row__tag">Spatial ML · Feature Importance</span>
+        <span class="index-row__tag">Spatial ML · Tree Diagnostics</span>
         <span class="index-row__body">
-          <h3>Random forest — variable importance</h3>
-          <p>Diagnostic summaries of minimal tree depth and split importance across spatial random forest models.</p>
+          <h3>Random forest — variable importance diagnostics</h3>
+          <p>Minimal depth distributions and split importance metrics across spatial random forest models predicting regional population change.</p>
         </span>
-        <span class="index-row__meta">Python · Scikit-Learn · Spatial ML · Tree Diagnostics</span>
+        <span class="index-row__meta">R · randomForestExplainer · Scikit-Learn</span>
         <span class="index-row__preview"><img src="../img/thumbs/Random_Forest.jpg" alt="" loading="lazy"></span>
       </a>
 
@@ -140,9 +140,9 @@
         <span class="index-row__tag">Transit Equity · GIS Analysis</span>
         <span class="index-row__body">
           <h3>Access to RIPTA bus services</h3>
-          <p>Service-area coverage and network gaps across Rhode Island's public transit system, integrating routes, stops, and walkshed buffers.</p>
+          <p>Walkshed analysis and network coverage across Rhode Island public transit, measuring population within quarter-mile bus stop buffers.</p>
         </span>
-        <span class="index-row__meta">QGIS · GTFS · Spatial Buffer · Leaflet</span>
+        <span class="index-row__meta">QGIS · GTFS · Spatial Buffers · Leaflet</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <line x1="6" y1="46" x2="58" y2="46"/><line x1="6" y1="46" x2="18" y2="24"/><line x1="18" y1="24" x2="40" y2="18"/><line x1="40" y1="18" x2="56" y2="30"/>
@@ -153,10 +153,10 @@
       </a>
 
       <a class="index-row" data-cat="map" href="maps/dunkin-isochrone/index.html">
-        <span class="index-row__tag">Isochrone Surface · Spatial GIS</span>
+        <span class="index-row__tag">Isochrone Surfaces · Spatial GIS</span>
         <span class="index-row__body">
-          <h3>Distance to Dunkin' — a Rhode Island isochrone</h3>
-          <p>Continuous network distance surfaces and travel-time boundaries modelled statewide.</p>
+          <h3>Distance to Dunkin' — Rhode Island isochrones</h3>
+          <p>Continuous network drive-time surfaces and travel-time boundaries modelled statewide across Rhode Island.</p>
         </span>
         <span class="index-row__meta">GIS · Spatial Isochrones · Raster · Leaflet</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
@@ -174,8 +174,8 @@
       <a class="index-row" data-cat="map" href="../maps/ri-history-compare/index.html">
         <span class="index-row__tag">Comparative Cartography · Web GIS</span>
         <span class="index-row__body">
-          <h3>Historical Rhode Island — a swipe comparison</h3>
-          <p>Side-by-side historical and contemporary spatial basemaps of Rhode Island with interactive swipe synchronization.</p>
+          <h3>Historical Rhode Island — swipe comparison</h3>
+          <p>Synchronised side-by-side historical and contemporary spatial basemaps of Rhode Island with an interactive swipe divider.</p>
         </span>
         <span class="index-row__meta">GIS · Cartography · Spatial Alignment · Leaflet</span>
         <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
@@ -192,19 +192,19 @@
         <span class="index-row__tag">Applied Statistics · Inference</span>
         <span class="index-row__body">
           <h3>A/B testing, worked example</h3>
-          <p>Controlled experimental split-testing workflow with hypothesis testing and power analysis diagnostics.</p>
+          <p>Controlled experimental split-testing workflow in R, evaluating conversion rate significance, power analysis, and hypothesis test boundaries.</p>
         </span>
-        <span class="index-row__meta">Statistical Inference · Hypothesis Testing · Power Analysis · R</span>
+        <span class="index-row__meta">R · Statistical Inference · Hypothesis Testing</span>
         <span class="index-row__preview"><img src="../img/thumbs/AB_test.jpg" alt="" loading="lazy"></span>
       </a>
 
       <a class="index-row" data-cat="data" href="misc/Data_processing.html">
         <span class="index-row__tag">ETL Pipeline · Data Engineering</span>
         <span class="index-row__body">
-          <h3>Hyperlink data processing</h3>
-          <p>Spatial join and entity matching pipeline linking JISC UK domain web records with regional boundaries.</p>
+          <h3>Hyperlink data processing pipeline</h3>
+          <p>Spatial join and postcode resolution pipeline matching JISC UK web domain archives with regional NUTS2 and LAD boundaries.</p>
         </span>
-        <span class="index-row__meta">Python · Data Pipeline · Postcode Matching · ETL</span>
+        <span class="index-row__meta">Python · ETL · Postcode Geocoding · Data Pipelines</span>
         <span class="index-row__preview"><img src="../img/thumbs/Data_process.jpg" alt="" loading="lazy"></span>
       </a>
 
