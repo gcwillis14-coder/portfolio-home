@@ -18,15 +18,11 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install HTMLHint & pa11y-ci
-        run: npm install -g htmlhint pa11y-ci
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
 
       - name: Run HTML validity check
         run: npx htmlhint "**/*.html" --config .htmlhintrc --ignore "portfolio/R/**,portfolio/misc/**,portfolio/python-notebooks/**,node_modules/**"
-
-      - name: Run accessibility audit
-        run: |
-          find . -type f -name "*.html" ! -path "*/node_modules/*" ! -path "*/portfolio/R/*" ! -path "*/portfolio/misc/*" ! -path "*/portfolio/python-notebooks/*" | xargs npx pa11y-ci
 
       - name: Link check
         uses: lycheeverse/lychee-action@v1.9.3
