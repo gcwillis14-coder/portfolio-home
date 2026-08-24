@@ -1,0 +1,34 @@
+name: Validate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install HTMLHint & pa11y-ci
+        run: npm install -g htmlhint pa11y-ci
+
+      - name: Run HTML validity check
+        run: npx htmlhint "**/*.html"
+
+      - name: Run accessibility audit
+        run: |
+          find . -type f -name "*.html" ! -path "*/node_modules/*" | xargs npx pa11y-ci
+
+      - name: Link check
+        uses: lycheeverse/lychee-action@v1.9.3
+        with:
+          args: --verbose --no-progress './**/*.html'
