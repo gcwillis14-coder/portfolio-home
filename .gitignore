@@ -9,3 +9,10 @@ local.db
 Thumbs.db
 .vscode/
 .idea/
+
+# Local Agent Customizations
+.agents/
+.agent/
+_agents/
+_agent/
+
