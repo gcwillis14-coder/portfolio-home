@@ -155,8 +155,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 /* -------------------------------------------------------------------- */
 /* section rhythm                                                        */
 /* -------------------------------------------------------------------- */
-.section{ padding: 88px 0; border-bottom: var(--hairline-w) solid var(--hair); }
-.section--tight{ padding: 56px 0; }
+.section{ padding: 88px 0; border-bottom: var(--hairline-w) solid var(--hair); content-visibility: auto; contain-intrinsic-size: auto 800px; }
 .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
 .section-head h2{ font-family: var(--serif); font-weight:500; font-size: clamp(26px,3vw,34px); color: var(--bone); }
 .section-head__link{ font-family: var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color: var(--ember); white-space:nowrap; }
