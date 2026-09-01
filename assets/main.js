@@ -1,4 +1,4 @@
-/* George Willis — portfolio. No frameworks, no build step. */
+/* George Willis - portfolio. No frameworks, no build step. */
 (function(){
   "use strict";
 

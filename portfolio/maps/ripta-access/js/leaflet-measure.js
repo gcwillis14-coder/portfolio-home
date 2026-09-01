@@ -2113,7 +2113,7 @@ exports.degrees = {
   };
 
   // Shuffle an array, using the modern version of the 
-  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
   _.shuffle = function(obj) {
     var rand;
     var index = 0;
@@ -4802,7 +4802,7 @@ sprintf.vsprintf = vsprintf;
   };
 
   // A mostly-internal function to generate callbacks that can be applied
-  // to each element in a collection, returning the desired result — either
+  // to each element in a collection, returning the desired result - either
   // identity, an arbitrary callback, a property matcher, or a property accessor.
   var cb = function(value, context, argCount) {
     if (value == null) return _.identity;
@@ -5066,7 +5066,7 @@ sprintf.vsprintf = vsprintf;
   };
 
   // Shuffle a collection, using the modern version of the
-  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
   _.shuffle = function(obj) {
     var set = isArrayLike(obj) ? obj : _.values(obj);
     var length = set.length;

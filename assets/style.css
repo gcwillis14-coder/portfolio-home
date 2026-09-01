@@ -1,7 +1,7 @@
 /* ==========================================================================
-   George Willis — portfolio design system
+   George Willis - portfolio design system
    Palette is drawn directly from the nighttime-lights map in /portfolio/R/
-   Animated_NTL — black ground, ember core, amber-white peaks. The FT
+   Animated_NTL - black ground, ember core, amber-white peaks. The FT
    reference shows up in structure (masthead, hairlines, mono kickers,
    index-style listings) rather than in a literal cream/salmon palette.
    ========================================================================== */
@@ -16,10 +16,10 @@
   --dust-dim:   #5C584E;   /* tertiary text, disabled, faint */
   --hair:       rgba(236,230,217,0.14);   /* hairline rule on ink */
   --hair-strong:rgba(236,230,217,0.26);
-  --ember:      #E2661F;   /* primary accent — links, tags, active state */
+  --ember:      #E2661F;   /* primary accent - links, tags, active state */
   --ember-dim:  #7A3714;   /* ember at low opacity contexts / borders */
-  --amber:      #F2B441;   /* secondary accent — hover / hot state */
-  --paper:      #F1E9D8;   /* rare "clipping" panel — publications */
+  --amber:      #F2B441;   /* secondary accent - hover / hot state */
+  --paper:      #F1E9D8;   /* rare "clipping" panel - publications */
   --paper-ink:  #1B1712;   /* text on paper panel */
 
   /* -- type ------------------------------------------------------------ */
@@ -223,7 +223,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .ticker__label{ font-family: var(--mono); font-size: 10.5px; letter-spacing:.1em; text-transform:uppercase; color: var(--dust); }
 
 /* -------------------------------------------------------------------- */
-/* index rows — the signature list treatment used for work + writing    */
+/* index rows - the signature list treatment used for work + writing    */
 /* -------------------------------------------------------------------- */
 .index-list{ border-top: var(--hairline-w) solid var(--hair); }
 .index-row{
@@ -267,7 +267,7 @@ a.index-row{ cursor:pointer; }
 .index-row:hover .index-row__meta,
 .index-row:focus-within .index-row__meta{ opacity: 0; }
 
-/* duotone preview swatch — reveals on hover/focus, desktop only */
+/* duotone preview swatch - reveals on hover/focus, desktop only */
 .index-row__preview{
   position:absolute; right: var(--gutter); top: 50%;
   width: 168px; height: 108px;
@@ -320,7 +320,7 @@ a.index-row{ cursor:pointer; }
 .filters button.is-active{ color: var(--ink); background: var(--ember); border-color: var(--ember); }
 
 /* -------------------------------------------------------------------- */
-/* publications — "clipping" treatment                                  */
+/* publications - "clipping" treatment                                  */
 /* -------------------------------------------------------------------- */
 .clip-list{ display:flex; flex-direction:column; gap: 18px; }
 .clip{

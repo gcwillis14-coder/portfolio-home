@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GigRadar Engineering Case Study &mdash; George Willis</title>
+<title>GigRadar Engineering Case Study - George Willis</title>
 <meta name="description" content="Engineering case study on GigRadar: a personal, local-first London live-music radar and urgency intelligence platform built with FastAPI, SvelteKit, PostgreSQL, pgvector, and Ollama.">
 <link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="../assets/case-study.css">
@@ -64,7 +64,7 @@
     <div class="cs-overview__grid">
       <div class="cs-overview__text">
         <p>GigRadar is a personal, local-first London live-music discovery and urgency intelligence engine. It continuously monitors 100+ grassroots music venues across London boroughs, tracking event lifecycles from announcement to sell-out, scoring ticket urgency, and extracting structured gig data directly from unstructured social flyers using local multimodal vision models.</p>
-        <p>Unlike commercial aggregator platforms (DICE, Ticketmaster, Songkick) that optimize for ad placement and ticket resale markups, GigRadar extracts a <em>zero-day signal</em> directly from venue websites, promoter feeds, and physical flyers—giving gig-goers actionable notice before competitive ticket drops sell out.</p>
+        <p>Unlike commercial aggregator platforms (DICE, Ticketmaster, Songkick) that optimize for ad placement and ticket resale markups, GigRadar extracts a <em>zero-day signal</em> directly from venue websites, promoter feeds, and physical flyers - giving gig-goers actionable notice before competitive ticket drops sell out.</p>
       </div>
       <div class="cs-metrics">
         <div class="cs-metric">
@@ -253,7 +253,7 @@
         </div>
         <div class="cs-subsystem">
           <h3>Semantic Deduplication</h3>
-          <p>Incoming observations are matched against canonical records using a two-tier strategy: exact deterministic keys (venue ID + date + artist slug) with a semantic cosine distance fallback via <code>pgvector</code>. Borderline matches (0.10–0.30 distance) are routed to a human review queue.</p>
+          <p>Incoming observations are matched against canonical records using a two-tier strategy: exact deterministic keys (venue ID + date + artist slug) with a semantic cosine distance fallback via <code>pgvector</code>. Borderline matches (0.10-0.30 distance) are routed to a human review queue.</p>
         </div>
         <div class="cs-subsystem">
           <h3>Lifecycle &amp; Edge Separation</h3>
@@ -277,7 +277,7 @@
         <h4>Decision</h4>
         <p>Build custom, direct DOM scrapers and ICS feed readers for London grassroots venues rather than relying on DICE, Ticketmaster, or Songkick APIs.</p>
         <h4>Why</h4>
-        <p>Official ticketing APIs reflect events only after they are officially listed, meaning tickets are discovered at the same time as the wider market. Scraping venue event calendars and Instagram flyers directly yields a <strong>zero-day signal</strong>—discovering shows days before competitive ticket releases.</p>
+        <p>Official ticketing APIs reflect events only after they are officially listed, meaning tickets are discovered at the same time as the wider market. Scraping venue event calendars and Instagram flyers directly yields a <strong>zero-day signal</strong> - discovering shows days before competitive ticket releases.</p>
         <h4>Alternatives Considered</h4>
         <p>Commercial event aggregator APIs (DICE, Ticketmaster Discovery, Resident Advisor GraphQL).</p>
         <h4>Trade-offs &amp; Rationale</h4>
@@ -295,7 +295,7 @@
         <h4>Alternatives Considered</h4>
         <p>Pinecone, Qdrant, Milvus, or PostgreSQL full-text search (tsvector).</p>
         <h4>Trade-offs &amp; Rationale</h4>
-        <p>While standalone vector databases scale higher for multi-million vector datasets, GigRadar processes tens of thousands of London events annually—well within the sub-millisecond index threshold of PostgreSQL's HNSW vector indexing.</p>
+        <p>While standalone vector databases scale higher for multi-million vector datasets, GigRadar processes tens of thousands of London events annually - well within the sub-millisecond index threshold of PostgreSQL's HNSW vector indexing.</p>
       </div>
 
       <!-- Card 3 -->
@@ -309,7 +309,7 @@
         <h4>Alternatives Considered</h4>
         <p>OpenAI GPT-4o-mini vision API, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash.</p>
         <h4>Trade-offs &amp; Rationale</h4>
-        <p>Local vision inference requires 2–3 seconds on CPU/local GPU vs sub-second cloud calls. Since flyer ingestion is an asynchronous background batch process, throughput and zero cost far outweigh sub-second response times.</p>
+        <p>Local vision inference requires 2-3 seconds on CPU/local GPU vs sub-second cloud calls. Since flyer ingestion is an asynchronous background batch process, throughput and zero cost far outweigh sub-second response times.</p>
       </div>
 
       <!-- Card 4 -->
@@ -379,8 +379,8 @@
         <h3><span>⚡</span> Deterministic Task Runner (`Justfile`)</h3>
         <p>All developer workflows are standardized behind declarative <code>Justfile</code> recipes. This provides instant command discovery across polyglot stacks (Python + Node) and prevents brittle shell aliases or Makefile tab syntax issues.</p>
         <div class="cs-command-box">
-          <code>just dev</code> &mdash; Start backend &amp; edge frontend<br>
-          <code>just review-fast</code> &mdash; Run all lint &amp; type gates
+          <code>just dev</code> - Start backend &amp; edge frontend<br>
+          <code>just review-fast</code> - Run all lint &amp; type gates
         </div>
       </div>
 
@@ -389,8 +389,8 @@
         <h3><span>🔒</span> Rootless Containers (`Podman Compose`)</h3>
         <p>Local infrastructure services (PostgreSQL 16, pgvector, Ollama model runner) are orchestrated using Podman Compose in rootless mode, ensuring complete local isolation without requiring privileged Docker root daemon sockets.</p>
         <div class="cs-command-box">
-          <code>just up</code> &mdash; Launch PostgreSQL + pgvector container<br>
-          <code>just down</code> &mdash; Cleanly teardown background services
+          <code>just up</code> - Launch PostgreSQL + pgvector container<br>
+          <code>just down</code> - Cleanly teardown background services
         </div>
       </div>
 
@@ -482,7 +482,7 @@
 
 <footer class="footer">
   <div class="wrap footer__row">
-    <span class="footer__mark">George Willis — Geodata &amp; Spatial Analysis</span>
+    <span class="footer__mark">George Willis - Geodata &amp; Spatial Analysis</span>
     <div class="footer__links">
       <a href="mailto:gcw519email@proton.me">Email</a>
       <a href="https://github.com/gcwillis14-coder" target="_blank" rel="noopener">GitHub</a>
