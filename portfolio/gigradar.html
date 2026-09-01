@@ -29,11 +29,13 @@
     <span class="cs-hero__status">Deployed via Cloudflare Pages</span>
     <h1 class="cs-hero__title">GigRadar</h1>
     <p class="cs-hero__stack">FastAPI · SvelteKit · PostgreSQL · pgvector · Ollama</p>
-    <div class="cs-hero__actions">
-      <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn">Live Demo</a>
-      <a href="#architecture" class="btn">Architecture</a>
-      <a href="#engineering" class="btn">Engineering</a>
-      <a href="#roadmap" class="btn">Roadmap</a>
+    <div class="cs-hero__actions" style="display:flex; flex-direction:column; gap:0.5rem; align-items:flex-start;">
+      <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn" style="background:var(--ember); color:var(--ink); font-weight:600; padding:12px 24px;">🚀 Launch Live Demo</a>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+        <a href="#architecture" class="btn btn--small">🏗 Architecture</a>
+        <a href="#engineering" class="btn btn--small">⚙ Engineering Decisions</a>
+        <a href="#roadmap" class="btn btn--small">🧪 Development Process</a>
+      </div>
     </div>
   </section>
 
@@ -212,6 +214,15 @@
         <p>Spatial venue friction, neighborhood clustering, and transit-aware labels.</p>
       </div>
     </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="wrap" style="padding: 4rem 0; text-align:center; border-top: 1px solid var(--hair);">
+    <h2 class="cs-hero__title" style="font-size: 2rem; margin-bottom: 1rem;">Interested in trying it?</h2>
+    <p style="color: var(--dust); max-width: 600px; margin: 0 auto 2rem; line-height: 1.6;">
+      The demo is intentionally isolated from the production application and showcases the current feature set using deterministic sample data.
+    </p>
+    <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn" style="background:var(--ember); color:var(--ink); font-weight:600; padding:12px 24px; display:inline-block;">Launch Live Demo</a>
   </section>
 </main>
 
