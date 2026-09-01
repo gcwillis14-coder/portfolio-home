@@ -556,21 +556,13 @@
 
 /* Featured Project Card (Homepage & Index) */
 .featured-project {
-  background: linear-gradient(135deg, rgba(226, 102, 31, 0.08) 0%, rgba(21, 24, 26, 0.95) 45%, var(--panel) 100%);
-  border: 1px solid rgba(226, 102, 31, 0.35);
+  background: var(--panel);
+  border: 1px solid var(--hair-strong);
+  border-top: 2px solid var(--ember);
   padding: clamp(24px, 4vw, 44px);
   margin-bottom: 2.5rem;
   position: relative;
-  border-radius: 4px;
-}
-.featured-project::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--ember), var(--amber), transparent);
+  border-radius: 3px;
 }
 .featured-badge {
   display: inline-flex;

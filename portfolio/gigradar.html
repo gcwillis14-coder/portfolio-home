@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GigRadar Engineering Case Study - George Willis</title>
-<meta name="description" content="Engineering case study on GigRadar: a personal, local-first London live-music radar and urgency intelligence platform built with FastAPI, SvelteKit, PostgreSQL, pgvector, and Ollama.">
+<title>GigRadar - London Live Music Radar &amp; Full-Stack Case Study - George Willis</title>
+<meta name="description" content="Why I built GigRadar: a personal, ad-free London grassroots live-music radar, how I parse social flyers with local AI, and exploring agent orchestration and modern full-stack tooling.">
 <link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="../assets/case-study.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,9 +30,9 @@
   <!-- Hero Section -->
   <section class="cs-hero wrap">
     <div class="cs-hero__header">
-      <span class="cs-hero__status">Deployed via Cloudflare Pages</span>
+      <span class="cs-hero__status">Personal Project &amp; Engineering Study</span>
       <h1 class="cs-hero__title">GigRadar</h1>
-      <p class="cs-hero__subtitle">London Grassroots Live-Music Radar &amp; Urgency Intelligence Platform</p>
+      <p class="cs-hero__subtitle">Why I built a personal London live-music radar, how it solves grassroots gig discovery, and an experiment in agent-orchestrated full-stack engineering.</p>
       <div class="cs-hero__stack">
         <span>FastAPI</span>
         <span>SvelteKit</span>
@@ -42,19 +42,19 @@
         <span>Cloudflare Pages</span>
         <span>uv</span>
         <span>Justfile</span>
-        <span>HMAC Auth</span>
+        <span>Agent Orchestration</span>
       </div>
     </div>
     
     <div class="cs-hero__actions">
-      <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn" style="background:var(--ember); color:var(--ink); font-weight:600; padding:13px 26px;">🚀 Launch Live Demo ↗</a>
+      <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn" style="background:var(--ember); color:var(--ink); font-weight:600; padding:13px 26px;">Launch Live Demo ↗</a>
       
       <div class="cs-toc-nav">
-        <a href="#screenshots" class="cs-toc-btn">🖼 Screenshots</a>
-        <a href="#architecture" class="cs-toc-btn">🏗 Architecture</a>
-        <a href="#engineering" class="cs-toc-btn">⚙ Engineering Decisions</a>
-        <a href="#development" class="cs-toc-btn">🧪 Development Process</a>
-        <a href="#roadmap" class="cs-toc-btn">🛣 Roadmap</a>
+        <a href="#screenshots" class="cs-toc-btn">How I Use It</a>
+        <a href="#architecture" class="cs-toc-btn">Architecture</a>
+        <a href="#engineering" class="cs-toc-btn">Decisions &amp; Learnings</a>
+        <a href="#development" class="cs-toc-btn">Full-Stack Tooling</a>
+        <a href="#roadmap" class="cs-toc-btn">Roadmap</a>
       </div>
     </div>
   </section>
@@ -63,29 +63,30 @@
   <section class="cs-overview wrap">
     <div class="cs-overview__grid">
       <div class="cs-overview__text">
-        <p>GigRadar is a personal, local-first London live-music discovery and urgency intelligence engine. It continuously monitors 100+ grassroots music venues across London boroughs, tracking event lifecycles from announcement to sell-out, scoring ticket urgency, and extracting structured gig data directly from unstructured social flyers using local multimodal vision models.</p>
-        <p>Unlike commercial aggregator platforms (DICE, Ticketmaster, Songkick) that optimize for ad placement and ticket resale markups, GigRadar extracts a <em>zero-day signal</em> directly from venue websites, promoter feeds, and physical flyers - giving gig-goers actionable notice before competitive ticket drops sell out.</p>
+        <p>I love London's grassroots live music scene: small pub backrooms, community spaces, and independent venues across Hackney, Brixton, Camden, Peckham, and Dalston. But keeping track of what was happening on any given night was exhausting. Commercial ticketing apps (DICE, Ticketmaster, Songkick, RA) are heavily geared towards promoted headliners, festival packages, and ticket markups. They routinely miss the small £5-£10 DIY gigs, pub jazz sessions, and emerging indie bands that make London's music culture special.</p>
+        <p>The grassroots scene is fragmented: some venues maintain basic HTML calendar tables, others use ICS feeds, and many post only a graphic flyer to Instagram. By the time I found out about an intimate gig through word of mouth, tickets were either already sold out or the date had passed. I built GigRadar to solve my own problem: a clean, consolidated live radar that scrapes independent venue calendars directly, extracts structured show dates from messy poster images using local vision models, and tracks ticket status changes so I never miss an intimate gig.</p>
+        <p>It was also a great opportunity to get hands-on with a modern full-stack toolchain. I wanted to build a complete system from scratch: using AI coding agents for research and refactoring, running local multimodal models (Ollama) to parse flyers without API bills, using PostgreSQL with pgvector for deduplication, and deploying a fast SvelteKit client to Cloudflare Pages.</p>
       </div>
       <div class="cs-metrics">
         <div class="cs-metric">
-          <span class="cs-metric__value">100+</span>
-          <span class="cs-metric__label">London Venues Tracked</span>
-          <span class="cs-metric__sub">Grassroots venues across 12 boroughs</span>
+          <span class="cs-metric__value">Multi-Source</span>
+          <span class="cs-metric__label">Grassroots Data Ingestion</span>
+          <span class="cs-metric__sub">Direct HTML scrapers, ICS/RSS calendars &amp; flyer uploads from London independent venues</span>
         </div>
         <div class="cs-metric">
-          <span class="cs-metric__value">Zero-Day</span>
-          <span class="cs-metric__label">Event Detection</span>
-          <span class="cs-metric__sub">Direct ingestion before aggregator releases</span>
+          <span class="cs-metric__value">Local AI</span>
+          <span class="cs-metric__label">Multimodal Flyer Extraction</span>
+          <span class="cs-metric__sub">Local Ollama vision (qwen3-vl) parsing unstructured gig posters into typed JSON with zero API costs</span>
         </div>
         <div class="cs-metric">
-          <span class="cs-metric__value">100% Local AI</span>
-          <span class="cs-metric__label">Multimodal Flyer OCR</span>
-          <span class="cs-metric__sub">Ollama vision &amp; nomic embeddings with zero API cost</span>
+          <span class="cs-metric__value">Agent-Driven</span>
+          <span class="cs-metric__label">AI Orchestration &amp; Tooling</span>
+          <span class="cs-metric__sub">Built with AI coding agents using strict ADR design specs, uv, Justfile &amp; zero-drift type gates</span>
         </div>
         <div class="cs-metric">
-          <span class="cs-metric__value">&lt;50ms</span>
-          <span class="cs-metric__label">Edge Response Time</span>
-          <span class="cs-metric__sub">Distributed SvelteKit client on Cloudflare Pages</span>
+          <span class="cs-metric__value">Edge Stack</span>
+          <span class="cs-metric__label">FastAPI + SvelteKit Architecture</span>
+          <span class="cs-metric__sub">Async Python backend + PostgreSQL/pgvector paired with a fast SvelteKit client on Cloudflare Pages</span>
         </div>
       </div>
     </div>
@@ -95,8 +96,8 @@
   <section id="screenshots" class="cs-screenshots wrap">
     <div class="section-head">
       <div>
-        <p class="kicker">Visual Interface</p>
-        <h2>Application Screenshots &amp; Workflows</h2>
+        <p class="kicker">Interface &amp; Workflows</p>
+        <h2>How I Use GigRadar</h2>
       </div>
       <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="section-head__link">Open Live Application ↗</a>
     </div>
@@ -149,7 +150,7 @@
             </div>
           </div>
           <p class="cs-preview-caption">
-            <strong>Live Radar Feed:</strong> Real-time discovery feed sorted by event date and demand velocity, featuring multi-dimensional borough, genre scene, and ticket urgency filter ribbons.
+            <strong>Live Discovery Feed:</strong> Browsing tonight's and upcoming gigs filtered by London borough (Brixton, Hackney, Camden, Dalston). It highlights ticket availability status so I know when an intimate pub room is close to selling out without wading through sponsored ads.
           </p>
         </div>
       </div>
@@ -187,7 +188,7 @@
             </div>
           </div>
           <p class="cs-preview-caption">
-            <strong>Flyer Lab Extraction:</strong> Unstructured social media posters and flyers are converted into strongly-typed Pydantic domain models using local Ollama vision inference.
+            <strong>Flyer Lab Ingestion:</strong> When a venue or promoter only shares a graphic flyer on social media, I drop the image into the Flyer Lab. Local Ollama vision extracts the artists, venue, date, door time, and ticket price directly into structured Pydantic models.
           </p>
         </div>
       </div>
@@ -198,20 +199,20 @@
   <section id="architecture" class="cs-architecture">
     <div class="wrap">
       <p class="kicker">System Architecture</p>
-      <h2 style="font-family:var(--serif); font-size:clamp(26px,3vw,34px); color:var(--bone); margin-top:6px;">End-to-End Ingestion &amp; Intelligence Pipeline</h2>
+      <h2 style="font-family:var(--serif); font-size:clamp(26px,3vw,34px); color:var(--bone); margin-top:6px;">End-to-End Data Pipeline &amp; Full-Stack System</h2>
 
       <!-- Static Pipeline Diagram -->
       <div class="cs-pipeline">
         <div class="cs-pipeline__node">
           <h4>1. Ingestion</h4>
           <p>Scrapers &amp; Feeds</p>
-          <span>100+ London venues</span>
+          <span>Multi-source venue adapters</span>
         </div>
         <div class="cs-pipeline__arrow">→</div>
         <div class="cs-pipeline__node">
           <h4>2. Flyer Lab</h4>
           <p>Ollama Vision</p>
-          <span>qwen3-vl multimodal OCR</span>
+          <span>Local qwen3-vl poster OCR</span>
         </div>
         <div class="cs-pipeline__arrow">→</div>
         <div class="cs-pipeline__node">
@@ -223,41 +224,41 @@
         <div class="cs-pipeline__node">
           <h4>4. Resolution</h4>
           <p>pgvector + Rules</p>
-          <span>Cosine distance dedup</span>
+          <span>Cosine distance deduplication</span>
         </div>
         <div class="cs-pipeline__arrow">→</div>
         <div class="cs-pipeline__node">
           <h4>5. Data Store</h4>
           <p>PostgreSQL</p>
-          <span>ACID Changelog &amp; State</span>
+          <span>ACID state &amp; change tracking</span>
         </div>
         <div class="cs-pipeline__arrow">→</div>
         <div class="cs-pipeline__node">
-          <h4>6. API</h4>
+          <h4>6. API Layer</h4>
           <p>FastAPI</p>
-          <span>Async Pydantic endpoints</span>
+          <span>Async Pydantic contracts</span>
         </div>
         <div class="cs-pipeline__arrow">→</div>
         <div class="cs-pipeline__node">
           <h4>7. Delivery</h4>
           <p>Cloudflare Pages</p>
-          <span>Edge SvelteKit client</span>
+          <span>Fast SvelteKit client</span>
         </div>
       </div>
 
       <!-- Subsystem Breakdowns -->
       <div class="cs-subsystems">
         <div class="cs-subsystem">
-          <h3>Observation &amp; Ingestion</h3>
-          <p>Raw observation events are ingested via custom venue adapters, RSS feeds, and visual poster uploads. Ingested payloads are persisted as immutable <code>RawObservation</code> records, preserving raw DOM snapshots, timestamps, and parser versions for auditing.</p>
+          <h3>Multi-Source Ingestion &amp; Adapters</h3>
+          <p>Grassroots venues don't have standardized APIs. I wrote custom adapters and feed parsers that convert raw venue web pages, ICS calendars, and poster uploads into immutable <code>RawObservation</code> records, preserving source DOM snapshots for debugging and auditing.</p>
         </div>
         <div class="cs-subsystem">
-          <h3>Semantic Deduplication</h3>
-          <p>Incoming observations are matched against canonical records using a two-tier strategy: exact deterministic keys (venue ID + date + artist slug) with a semantic cosine distance fallback via <code>pgvector</code>. Borderline matches (0.10-0.30 distance) are routed to a human review queue.</p>
+          <h3>Semantic Deduplication with pgvector</h3>
+          <p>When the same gig is listed on a venue site and a promoter flyer with slight spelling variations, GigRadar uses deterministic slug matching with a fallback to <code>pgvector</code> cosine similarity. Borderline matches are routed to a quick review queue.</p>
         </div>
         <div class="cs-subsystem">
-          <h3>Lifecycle &amp; Edge Separation</h3>
-          <p>State changes generate timestamped entries in <code>EventChangeLog</code>, driving real-time urgency scoring heuristics (e.g. <code>available</code> → <code>low_tickets</code>). The public demo runs as a secure, isolated SvelteKit client on Cloudflare Pages using deterministic sample data.</p>
+          <h3>Edge Client &amp; Clean Separation</h3>
+          <p>To keep the public demo fast and secure without exposing internal database credentials or incurring server costs, the frontend runs as an edge-rendered SvelteKit app on Cloudflare Pages using Web Crypto HMAC session signing.</p>
         </div>
       </div>
     </div>
@@ -266,22 +267,22 @@
   <!-- Engineering Decisions (ADRs) -->
   <section id="engineering" class="cs-decisions wrap">
     <p class="kicker">Architectural Decisions</p>
-    <h2 style="font-family:var(--serif); font-size:clamp(26px,3vw,34px); color:var(--bone); margin-top:6px;">Engineering Decisions &amp; Trade-Offs</h2>
+    <h2 style="font-family:var(--serif); font-size:clamp(26px,3vw,34px); color:var(--bone); margin-top:6px;">Engineering Decisions &amp; What I Learned</h2>
     
     <div class="cs-cards">
       
       <!-- Card 1 -->
       <div class="cs-card">
         <span class="cs-card__badge">Data Ingestion</span>
-        <h3>Custom Scraping vs Official Ticketing APIs</h3>
+        <h3>Direct Grassroots Scraping vs Mainstream Ticketing APIs</h3>
         <h4>Decision</h4>
-        <p>Build custom, direct DOM scrapers and ICS feed readers for London grassroots venues rather than relying on DICE, Ticketmaster, or Songkick APIs.</p>
+        <p>Build custom DOM scrapers and feed adapters for individual grassroots venues rather than relying on DICE, Ticketmaster, or Songkick APIs.</p>
         <h4>Why</h4>
-        <p>Official ticketing APIs reflect events only after they are officially listed, meaning tickets are discovered at the same time as the wider market. Scraping venue event calendars and Instagram flyers directly yields a <strong>zero-day signal</strong> - discovering shows days before competitive ticket releases.</p>
+        <p>Mainstream APIs only list events with formal commercial ticketing partnerships. Scraping grassroots calendars and reading flyers directly captures the small £5-£10 pub backroom gigs and community nights that aggregators completely ignore.</p>
         <h4>Alternatives Considered</h4>
-        <p>Commercial event aggregator APIs (DICE, Ticketmaster Discovery, Resident Advisor GraphQL).</p>
+        <p>Commercial aggregator APIs (DICE, Ticketmaster Discovery, Resident Advisor GraphQL).</p>
         <h4>Trade-offs &amp; Rationale</h4>
-        <p>Requires maintaining resilient DOM parsing abstractions that gracefully handle markup changes. We mitigate fragility by isolating parsers behind a unified <code>BaseAdapter</code> contract with deterministic fallback fixtures.</p>
+        <p>Venue web markup changes over time. I learned to build resilient scraping abstractions behind a common <code>BaseAdapter</code> interface with fallback fixtures and automated DOM snapshot tests.</p>
       </div>
 
       <!-- Card 2 -->
@@ -289,27 +290,27 @@
         <span class="cs-card__badge">Database &amp; Vectors</span>
         <h3>PostgreSQL + pgvector vs Dedicated Vector Databases</h3>
         <h4>Decision</h4>
-        <p>Use a single PostgreSQL instance with the <code>pgvector</code> extension for both ACID relational event storage and high-dimensional semantic vector search.</p>
+        <p>Use a single PostgreSQL instance with the <code>pgvector</code> extension for both relational event metadata and semantic vector search.</p>
         <h4>Why</h4>
-        <p>Keeping relational metadata (venue geometry, ticket pricing, change history) and 768-dimensional embeddings in the same database guarantees <strong>transactional ACID consistency</strong> in a single operational boundary, completely eliminating the distributed dual-write synchronization bugs common with standalone vector DBs.</p>
+        <p>Keeping event details, venue metadata, ticket status history, and vector embeddings in one database gives full ACID transactional consistency. It completely eliminated the dual-write sync bugs and extra operational overhead of running a dedicated vector DB (like Pinecone or Qdrant).</p>
         <h4>Alternatives Considered</h4>
-        <p>Pinecone, Qdrant, Milvus, or PostgreSQL full-text search (tsvector).</p>
+        <p>Pinecone, Qdrant, ChromaDB, or PostgreSQL full-text search (tsvector).</p>
         <h4>Trade-offs &amp; Rationale</h4>
-        <p>While standalone vector databases scale higher for multi-million vector datasets, GigRadar processes tens of thousands of London events annually - well within the sub-millisecond index threshold of PostgreSQL's HNSW vector indexing.</p>
+        <p>Standalone vector DBs scale higher for multi-million vector datasets, but for tens of thousands of London events, PostgreSQL HNSW indexing delivered sub-millisecond vector queries with zero infrastructure bloat.</p>
       </div>
 
       <!-- Card 3 -->
       <div class="cs-card">
         <span class="cs-card__badge">AI Strategy</span>
-        <h3>Local Ollama Multi-Model AI vs Cloud APIs</h3>
+        <h3>Local Ollama Models vs Cloud AI APIs</h3>
         <h4>Decision</h4>
-        <p>Execute all production intelligence locally using Ollama (<code>qwen3-vl</code> for flyer OCR and <code>nomic-embed-text</code> for vector embeddings) following the philosophy: <em>"Use the strongest AI to build the product; use the smallest AI to run the product."</em></p>
+        <p>Run all multimodal flyer OCR (<code>qwen3-vl</code>) and text embeddings (<code>nomic-embed-text</code>) locally via Ollama rather than using paid cloud vision APIs.</p>
         <h4>Why</h4>
-        <p>Cloud AI APIs introduce recurring subscription costs, vendor lock-in, latency variance, and external rate limits. Running local models gives a 100% private, cost-free sandbox that parses hundreds of heavy flyer images offline with zero billing anxiety.</p>
+        <p>Cloud AI APIs introduce recurring per-image bills, network latency, and vendor lock-in. Running lightweight models locally gives me a private sandbox where I can parse hundreds of event posters offline without worrying about API limits or costs.</p>
         <h4>Alternatives Considered</h4>
         <p>OpenAI GPT-4o-mini vision API, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash.</p>
         <h4>Trade-offs &amp; Rationale</h4>
-        <p>Local vision inference requires 2-3 seconds on CPU/local GPU vs sub-second cloud calls. Since flyer ingestion is an asynchronous background batch process, throughput and zero cost far outweigh sub-second response times.</p>
+        <p>Local vision inference takes 2-3 seconds on my machine compared to sub-second cloud APIs. Because flyer processing is an asynchronous background task, zero cost and offline reliability matter much more than instant responses.</p>
       </div>
 
       <!-- Card 4 -->
@@ -319,17 +320,17 @@
         <h4>Decision</h4>
         <p>Standardize backend services on FastAPI with Pydantic v2 schemas for strict boundary validation and native asynchronous concurrency.</p>
         <h4>Why</h4>
-        <p>High-frequency concurrent polling across 100+ venue endpoints requires an async-native runtime (ASGI). Pydantic v2's Rust core delivers ultra-fast schema serialization and guarantees strict type enforcement when parsing semi-structured JSON outputs from local AI extractors.</p>
+        <p>Polling multiple venue endpoints concurrently requires an async-native runtime (ASGI). Pydantic v2's Rust core delivers ultra-fast schema serialization and guarantees strict type enforcement when parsing semi-structured JSON outputs from local AI extractors.</p>
         <h4>Alternatives Considered</h4>
         <p>Django REST Framework (synchronous, heavy batteries), Flask (lacks native async and type validation).</p>
         <h4>Trade-offs &amp; Rationale</h4>
-        <p>Lacks Django's built-in admin panel and ORM migrations, requiring explicit SQLAlchemy and Alembic configuration. This trade-off was intentionally made for granular control over async database sessions.</p>
+        <p>Requires configuring SQLAlchemy async sessions and Alembic migrations manually, but gave complete granular control over database connection pools and async execution.</p>
       </div>
 
       <!-- Card 5 -->
       <div class="cs-card">
         <span class="cs-card__badge">Deployment &amp; Edge</span>
-        <h3>Cloudflare Pages Separation &amp; HMAC-SHA256 Auth</h3>
+        <h3>Edge SvelteKit Deployment &amp; Cloudflare Pages</h3>
         <h4>Decision</h4>
         <p>Deploy the frontend showcase as an edge SvelteKit application on Cloudflare Pages, isolated from the stateful database, using Web Crypto API HMAC-SHA256 signed session tokens.</p>
         <h4>Why</h4>
@@ -342,16 +343,16 @@
 
       <!-- Card 6 -->
       <div class="cs-card">
-        <span class="cs-card__badge">Engineering Lessons</span>
-        <h3>Upfront Architecture &amp; Single Source of Truth</h3>
+        <span class="cs-card__badge">Agent Tooling &amp; Workflow</span>
+        <h3>Agent Orchestration &amp; ADR-Driven Engineering</h3>
         <h4>Decision</h4>
-        <p>Establish strict repository modularity (<code>apps/</code>, <code>services/</code>, <code>packages/</code>, <code>docs/</code>) with Architectural Decision Records (ADRs) recorded on every major design pivot.</p>
+        <p>Develop the entire project using structured AI coding agents, driven by explicit Architectural Decision Records (ADRs) and strict type boundaries.</p>
         <h4>Why</h4>
-        <p>Iterative prototyping without explicit architectural boundaries leads to environment drift and refactoring friction. Planning schemas, domain models, and hosting strategies upfront reduces wasted code churn and ensures full traceability.</p>
+        <p>Rather than typing vague prompts into a chatbot, I used AI coding agents with clear roles: delegating research, schema design, and test generation while enforcing strict repository guidelines and automated quality checks.</p>
         <h4>Alternatives Considered</h4>
-        <p>Ad-hoc unstructured prototyping.</p>
+        <p>Manual unstructured coding, single-prompt AI generation.</p>
         <h4>Trade-offs &amp; Rationale</h4>
-        <p>Adds slight upfront documentation overhead, but drastically accelerates implementation speed, agentic pair programming, and code review consistency.</p>
+        <p>Writing ADRs and types upfront took a bit of initial effort, but it kept the AI agents on track, maintained consistent code style, and made polyglot refactoring across Python and TypeScript smooth and predictable.</p>
       </div>
 
     </div>
@@ -359,68 +360,68 @@
 
   <!-- Development Process & Tooling Best Practices -->
   <section id="development" class="cs-development wrap">
-    <p class="kicker">Engineering Rigor</p>
-    <h2 style="font-family:var(--serif); font-size:clamp(26px,3vw,34px); color:var(--bone); margin-top:6px;">Development Process &amp; Tooling</h2>
+    <p class="kicker">Developer Experience &amp; Tooling</p>
+    <h2 style="font-family:var(--serif); font-size:clamp(26px,3vw,34px); color:var(--bone); margin-top:6px;">Development Process &amp; Tooling Stack</h2>
     
     <div class="cs-dev-grid">
       
       <!-- Dev Card 1 -->
       <div class="cs-dev-card">
-        <h3><span>🐍</span> Python Tooling Authority (`uv`)</h3>
-        <p>We enforce a strict single-toolchain boundary: <code>uv</code> is the sole authority for Python 3.12+ virtual environment creation (<code>.venv</code>), lockfile resolution, and script execution. This eliminates interpreter shadowing, pip version drift, and slow dependency resolution.</p>
+        <h3>Agent Orchestration &amp; AI Workflows</h3>
+        <p>I structured development around AI coding agents with defined scopes: using subagents for codebase exploration, writing explicit ADR specs before implementing features, and running automated test suites before merging changes.</p>
+        <div class="cs-command-box">
+          <code># Spec-driven development &amp; verification</code><br>
+          <code>docs/adr/003-ollama-vision.md</code>
+        </div>
+      </div>
+
+      <!-- Dev Card 2 -->
+      <div class="cs-dev-card">
+        <h3>Python Toolchain Authority (uv)</h3>
+        <p>I enforced a strict single-toolchain boundary: <code>uv</code> is the sole authority for Python 3.12+ virtual environment creation (<code>.venv</code>), lockfile resolution, and script execution. It resolved packages in milliseconds and eliminated broken virtualenv paths.</p>
         <div class="cs-command-box">
           <code>uv sync --all-extras</code><br>
           <code>uv run pytest tests/ -v</code>
         </div>
       </div>
 
-      <!-- Dev Card 2 -->
-      <div class="cs-dev-card">
-        <h3><span>⚡</span> Deterministic Task Runner (`Justfile`)</h3>
-        <p>All developer workflows are standardized behind declarative <code>Justfile</code> recipes. This provides instant command discovery across polyglot stacks (Python + Node) and prevents brittle shell aliases or Makefile tab syntax issues.</p>
-        <div class="cs-command-box">
-          <code>just dev</code> - Start backend &amp; edge frontend<br>
-          <code>just review-fast</code> - Run all lint &amp; type gates
-        </div>
-      </div>
-
       <!-- Dev Card 3 -->
       <div class="cs-dev-card">
-        <h3><span>🔒</span> Rootless Containers (`Podman Compose`)</h3>
-        <p>Local infrastructure services (PostgreSQL 16, pgvector, Ollama model runner) are orchestrated using Podman Compose in rootless mode, ensuring complete local isolation without requiring privileged Docker root daemon sockets.</p>
+        <h3>Polyglot Task Runner (Justfile)</h3>
+        <p>All developer workflows are standardized behind declarative <code>Justfile</code> recipes. Instead of juggling different CLI flags across Python, Node, and Podman, one command starts the stack or runs the whole test suite.</p>
         <div class="cs-command-box">
-          <code>just up</code> - Launch PostgreSQL + pgvector container<br>
-          <code>just down</code> - Cleanly teardown background services
+          <code>just dev</code>: Start backend &amp; edge frontend<br>
+          <code>just review-fast</code>: Run all lint, type &amp; test gates
         </div>
       </div>
 
       <!-- Dev Card 4 -->
       <div class="cs-dev-card">
-        <h3><span>🛡️</span> Strict Quality Gates &amp; Type Safety</h3>
-        <p>Zero-tolerance CI quality gates combining <strong>Pyright</strong> strict static type checking, <strong>Ruff</strong> linting/formatting, <strong>SvelteKit check</strong> for template safety, and <strong>Gitleaks</strong> for pre-commit credential leak prevention.</p>
+        <h3>Rootless Containers (Podman Compose)</h3>
+        <p>Local infrastructure services (PostgreSQL 16, pgvector, Ollama model runner) are orchestrated using Podman Compose in rootless mode, keeping my local development environment isolated without requiring a privileged Docker daemon.</p>
+        <div class="cs-command-box">
+          <code>just up</code>: Launch PostgreSQL + pgvector container<br>
+          <code>just down</code>: Cleanly teardown background services
+        </div>
+      </div>
+
+      <!-- Dev Card 5 -->
+      <div class="cs-dev-card">
+        <h3>Zero-Drift Type Gates &amp; Linters</h3>
+        <p>Enforced strict quality gates combining <strong>Pyright</strong> strict static type checking, <strong>Ruff</strong> for sub-millisecond linting and formatting, and <strong>SvelteKit check</strong> for template type safety across the frontend.</p>
         <div class="cs-command-box">
           <code>uv run ruff check . &amp;&amp; uv run pyright</code><br>
           <code>npm --prefix apps/demo run check</code>
         </div>
       </div>
 
-      <!-- Dev Card 5 -->
-      <div class="cs-dev-card">
-        <h3><span>🧪</span> Testing &amp; In-Memory Verification</h3>
-        <p>Comprehensive unit and integration test suite using <code>pytest</code> with in-memory SQLite fixtures for urgency heuristic scoring, adapter payload parsing, and pgvector cosine distance deduplication routing.</p>
-        <div class="cs-command-box">
-          <code>pytest tests/test_urgency.py</code><br>
-          <code>pytest tests/test_deduplication.py</code>
-        </div>
-      </div>
-
       <!-- Dev Card 6 -->
       <div class="cs-dev-card">
-        <h3><span>🚀</span> Automated Preview Smoke Tests</h3>
-        <p>CI pipeline executes an automated Node.js smoke testing harness against live Cloudflare Pages preview builds, validating 18 critical assertions across public routes, HMAC auth redirects, guest mode, logout, and self-hosted fonts.</p>
+        <h3>Automated Preview Smoke Tests</h3>
+        <p>The CI pipeline executes an automated Node.js smoke testing harness against live Cloudflare Pages preview builds, validating 18 critical assertions across public routes, HMAC auth redirects, guest mode, logout, and self-hosted fonts.</p>
         <div class="cs-command-box">
           <code>just test-demo-smoke</code><br>
-          <code>✔ 18 assertions passed across 8 routes</code>
+          <code>18 assertions passed across 8 routes</code>
         </div>
       </div>
 
@@ -430,34 +431,34 @@
   <!-- Roadmap Section -->
   <section id="roadmap" class="cs-roadmap wrap">
     <p class="kicker">Evolution</p>
-    <h2 style="font-family:var(--serif); font-size:clamp(26px,3vw,34px); color:var(--bone); margin-top:6px;">Development Journey &amp; Roadmap</h2>
+    <h2 style="font-family:var(--serif); font-size:clamp(26px,3vw,34px); color:var(--bone); margin-top:6px;">Development Journey &amp; What's Next</h2>
     
     <div class="cs-roadmap-grid">
       
       <!-- Phase 1 -->
       <div class="cs-roadmap-card cs-roadmap-card--done">
-        <span class="cs-roadmap-status cs-roadmap-status--done">✓ Stage 1 &amp; 2 · Complete</span>
-        <h3>Core Ingestion &amp; Event Engine</h3>
+        <span class="cs-roadmap-status cs-roadmap-status--done">Stage 1 &amp; 2: Complete</span>
+        <h3>Grassroots Ingestion &amp; Event Storage</h3>
         <p>• Grassroots venue scraping engine<br>• PostgreSQL + pgvector schema<br>• Deterministic &amp; semantic deduplication<br>• Event change tracking &amp; urgency heuristics</p>
       </div>
 
       <!-- Phase 2 -->
       <div class="cs-roadmap-card cs-roadmap-card--current">
-        <span class="cs-roadmap-status cs-roadmap-status--current">● Stage 3 · Production Demo</span>
+        <span class="cs-roadmap-status cs-roadmap-status--current">Stage 3: Production Demo</span>
         <h3>Edge Client &amp; Hardened CI</h3>
         <p>• Multi-page SvelteKit application<br>• Cloudflare Pages edge deployment<br>• Web Crypto HMAC session tokens<br>• Automated CI preview smoke test suite</p>
       </div>
 
       <!-- Phase 3 -->
       <div class="cs-roadmap-card cs-roadmap-card--next">
-        <span class="cs-roadmap-status cs-roadmap-status--next">→ Stage 4 · Next Up</span>
-        <h3>London Spatial Intelligence</h3>
-        <p>• TfL transit catchments &amp; isochrones<br>• Spatial venue clustering &amp; walkability<br>• Multi-borough night-tube transit buffers<br>• Neighborhood scene density index</p>
+        <span class="cs-roadmap-status cs-roadmap-status--next">Stage 4: Next Up</span>
+        <h3>London Travel Catchments</h3>
+        <p>• TfL transit catchments &amp; isochrones<br>• Spatial venue clustering &amp; walkability<br>• Multi-borough night-tube transit buffers<br>• Filtering gigs by journey time from home</p>
       </div>
 
       <!-- Phase 4 -->
       <div class="cs-roadmap-card cs-roadmap-card--future">
-        <span class="cs-roadmap-status cs-roadmap-status--future">🔮 Stage 5 · Future</span>
+        <span class="cs-roadmap-status cs-roadmap-status--future">Stage 5: Future</span>
         <h3>Personal Radar Alerts</h3>
         <p>• Instant Telegram / WhatsApp alerts<br>• Follow-graph artist tracking<br>• Ticket drop reminder concierge<br>• Multi-city regional expansion</p>
       </div>

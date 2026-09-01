@@ -8,6 +8,7 @@ Welcome to the `portfolio-home` repository. This is a personal portfolio website
 2. **No Build Steps**: Do not add build tools like Webpack, Vite, or npm scripts for building. The site is served directly as-is via GitHub Pages.
 3. **Typography**: Use standard fonts as configured in the site. Avoid cliché AI aesthetics.
 4. **Project Cards**: When adding new projects, follow the existing structure. Use the `<a class="index-row">` pattern defined in `index.html`.
+5. **Commit Messages & PRs**: Keep commit messages and PR comments casual, clean, and developer-focused. Never mention "AI", "AI slop", "LLM", or agent tooling in commit messages, branch names, or PR descriptions.
 
 ## Project Card Structure
 
