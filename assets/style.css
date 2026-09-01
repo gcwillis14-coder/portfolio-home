@@ -237,7 +237,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   transition: background-color .18s ease;
 }
 a.index-row{ cursor:pointer; }
-a.index-row:hover, a.index-row:focus-visible{ background: var(--panel); }
+.index-row:hover, .index-row:focus-within{ background: var(--panel); }
 .index-row::before{
   content:"";
   position:absolute; left:0; top:0; bottom:0; width:2px;
@@ -246,7 +246,7 @@ a.index-row:hover, a.index-row:focus-visible{ background: var(--panel); }
   transform-origin: top;
   transition: transform .22s ease;
 }
-a.index-row:hover::before, a.index-row:focus-visible::before{ transform: scaleY(1); }
+.index-row:hover::before, .index-row:focus-within::before{ transform: scaleY(1); }
 
 .index-row__tag{
   font-family: var(--mono); font-size: 10.5px; letter-spacing:.08em; text-transform:uppercase;
@@ -264,8 +264,8 @@ a.index-row:hover::before, a.index-row:focus-visible::before{ transform: scaleY(
   display:flex; align-items:center; gap:16px; white-space:nowrap;
   transition: opacity .15s ease;
 }
-a.index-row:hover .index-row__meta,
-a.index-row:focus-visible .index-row__meta{ opacity: 0; }
+.index-row:hover .index-row__meta,
+.index-row:focus-within .index-row__meta{ opacity: 0; }
 
 /* duotone preview swatch — reveals on hover/focus, desktop only */
 .index-row__preview{
@@ -293,8 +293,8 @@ a.index-row:focus-visible .index-row__meta{ opacity: 0; }
 }
 .index-row__preview--mark{ display:flex; align-items:center; justify-content:center; }
 .index-row__preview--mark svg{ width: 64%; height:64%; opacity:.9; }
-a.index-row:hover .index-row__preview,
-a.index-row:focus-visible .index-row__preview{
+.index-row:hover .index-row__preview,
+.index-row:focus-within .index-row__preview{
   opacity: 1; transform: translateY(-50%) translateX(0);
 }
 @media (max-width: 900px){

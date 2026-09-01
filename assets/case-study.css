@@ -1,0 +1,254 @@
+/* ==========================================================================
+   Case Study Components
+   ========================================================================== */
+
+/* Hero Section */
+.cs-hero {
+  padding: calc(var(--gutter) * 2) 0;
+  border-bottom: var(--hairline-w) solid var(--hair);
+}
+.cs-hero__header {
+  margin-bottom: var(--gutter);
+}
+.cs-hero__title {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  font-weight: 400;
+  margin: 0.5rem 0;
+}
+.cs-hero__status {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--ember-dim);
+  color: var(--amber);
+  border: 1px solid var(--ember);
+  border-radius: 9999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.cs-hero__stack {
+  font-family: var(--mono);
+  color: var(--dust);
+  font-size: 13px;
+  margin-bottom: 2rem;
+}
+.cs-hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Project Overview */
+.cs-overview {
+  padding: calc(var(--gutter) * 2) 0;
+}
+.cs-overview__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gutter);
+}
+@media (min-width: 768px) {
+  .cs-overview__grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+.cs-overview__text {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--bone);
+}
+.cs-metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+}
+.cs-metric {
+  border-bottom: 1px solid var(--hair);
+  padding-bottom: 1rem;
+}
+.cs-metric:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.cs-metric__value {
+  font-family: var(--mono);
+  font-size: 2rem;
+  color: var(--ember);
+  display: block;
+}
+.cs-metric__label {
+  font-family: var(--sans);
+  color: var(--dust);
+  font-size: 0.9rem;
+}
+
+/* Architecture Section */
+.cs-architecture {
+  padding: calc(var(--gutter) * 2) 0;
+  background: var(--panel);
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+.cs-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .cs-pipeline {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.cs-pipeline__node {
+  padding: 1.5rem;
+  background: var(--ink);
+  border: 1px solid var(--hair);
+  text-align: center;
+  flex: 1;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.cs-pipeline__node:hover {
+  border-color: var(--amber);
+}
+.cs-pipeline__node h4 {
+  color: var(--bone);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.cs-pipeline__node p {
+  color: var(--dust);
+  font-size: 0.8rem;
+}
+.cs-pipeline__arrow {
+  color: var(--dust);
+  text-align: center;
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .cs-pipeline__arrow {
+    transform: rotate(-90deg);
+  }
+}
+
+/* Engineering Decisions */
+.cs-decisions {
+  padding: calc(var(--gutter) * 2) 0;
+}
+.cs-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .cs-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.cs-card {
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cs-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+.cs-card h4 {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--dust);
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+.cs-card p {
+  color: var(--bone);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Engineering Quality (Evidence) */
+.cs-evidence {
+  padding: calc(var(--gutter) * 2) 0;
+  border-top: 1px solid var(--hair);
+}
+.cs-checklist {
+  font-family: var(--mono);
+  color: var(--bone);
+  font-size: 0.9rem;
+}
+.cs-checklist li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cs-checklist li::before {
+  content: '✔';
+  color: var(--ember);
+}
+
+/* Roadmap */
+.cs-roadmap {
+  padding: calc(var(--gutter) * 2) 0;
+  border-top: 1px solid var(--hair);
+}
+.cs-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--hair);
+}
+.cs-timeline__item {
+  position: relative;
+  padding-bottom: 1rem;
+}
+.cs-timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.25rem;
+  width: 10px;
+  height: 10px;
+  background: var(--ink);
+  border: 2px solid var(--dust);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.cs-timeline__item--done::before {
+  background: var(--ember);
+  border-color: var(--ember);
+}
+.cs-timeline__item--current::before {
+  background: var(--amber);
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(242, 180, 65, 0.2);
+}
+.cs-timeline__item h4 {
+  font-family: var(--mono);
+  color: var(--bone);
+}
+.cs-timeline__item p {
+  color: var(--dust);
+  font-size: 0.9rem;
+}
