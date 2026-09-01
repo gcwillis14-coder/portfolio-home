@@ -68,6 +68,24 @@
       <a href="portfolio/index.html" class="section-head__link">Full index →</a>
     </div>
 
+    <!-- Featured Project Card -->
+    <div class="featured-project">
+      <span class="featured-badge">★ Featured Engineering Case Study</span>
+      <h3>GigRadar — London Live Music Radar</h3>
+      <p>Personal, local-first London live-music discovery and urgency intelligence platform. Tracks event lifecycles across 100+ grassroots venues using automated scrapers, local Ollama vision flyer OCR, pgvector semantic deduplication, and an edge-deployed SvelteKit client.</p>
+      <div class="featured-meta">
+        <span>FastAPI</span>
+        <span>SvelteKit</span>
+        <span>PostgreSQL + pgvector</span>
+        <span>Ollama Vision</span>
+        <span>Cloudflare Pages</span>
+      </div>
+      <div class="featured-actions">
+        <a href="portfolio/gigradar.html" class="btn" style="background:var(--ember); color:var(--ink); font-weight:600;">Read Case Study →</a>
+        <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn btn--ghost">Launch Live Demo ↗</a>
+      </div>
+    </div>
+
     <div class="index-list">
 
       <a class="index-row" href="https://transitflow-2s4.pages.dev" target="_blank" rel="noopener">
@@ -95,14 +113,15 @@
         <span class="index-row__tag">Full-Stack GIS · Web Scraping</span>
         <span class="index-row__body">
           <a href="portfolio/gigradar.html" style="display: block;">
-            <h3>GigRadar — London live music radar</h3>
+            <h3>GigRadar — Case study &amp; engineering decisions</h3>
           </a>
-          <p>Automated venue scraping across 100+ London grassroots music venues, using vector embeddings for deduplication and local vision models for flyer parsing.</p>
-          <div style="margin-top: 12px;">
-            <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn" style="padding: 4px 12px; font-size: 12px;">Live Demo ↗</a>
+          <p>Deep-dive case study into custom grassroots venue scraping, pgvector semantic deduplication, local Ollama vision flyer parsing, and Cloudflare Pages edge delivery.</p>
+          <div style="margin-top: 12px; display:flex; gap:10px;">
+            <a href="portfolio/gigradar.html" class="btn" style="padding: 5px 14px; font-size: 11px;">Case Study →</a>
+            <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 5px 14px; font-size: 11px;">Live Demo ↗</a>
           </div>
         </span>
-        <span class="index-row__meta">Python · FastAPI · Ollama · pgvector</span>
+        <span class="index-row__meta">FastAPI · SvelteKit · pgvector · Ollama</span>
         <a href="portfolio/gigradar.html" class="index-row__preview index-row__preview--mark" aria-hidden="true" style="pointer-events: auto;">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <circle cx="32" cy="32" r="24" stroke-dasharray="2 4" opacity="0.4"/>
