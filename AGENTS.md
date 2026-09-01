@@ -22,7 +22,7 @@ To add a new project to the portfolio, use the following HTML snippet in the "Se
   </span>
   <span class="index-row__meta">Tools · Languages · Frameworks</span>
   <span class="index-row__preview">
-    <img src="img/thumbs/image.jpg" alt="" loading="lazy">
+    <img src="img/thumbs/image.jpg" alt="" loading="lazy" />
   </span>
 </a>
 ```
