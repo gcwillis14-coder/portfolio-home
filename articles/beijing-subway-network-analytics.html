@@ -276,13 +276,13 @@
     <!-- Section 1 -->
     <h2>1. Introduction</h2>
     <p>
-      Spatial data science and urban analytics increasingly rely on high-resolution data to evaluate the structural efficiency and accessibility of metropolitan transport infrastructure (Willis &amp; Tranos, 2021). In rapid transit systems, graph-theoretic metrics, such as betweenness centrality, global network efficiency, and percolation thresholds, depend critically upon the topological fidelity and metric precision of the underlying geospatial graph (Derrible &amp; Kennedy, 2010; Cats, 2016).
+      Spatial data science and urban analytics increasingly rely on high-resolution digital traces to evaluate the structural efficiency, accessibility, and economic integration of metropolitan transport infrastructure (Willis &amp; Tranos, 2021; Tranos, Carrascal-Incera &amp; Willis, 2022). In rapid transit systems, graph-theoretic metrics, such as betweenness centrality, global network efficiency, and percolation thresholds, depend critically upon the topological fidelity and metric precision of the underlying geospatial graph (Derrible &amp; Kennedy, 2010; Cats, 2016).
     </p>
     <p>
-      However, empirical researchers examining transit systems in emerging economies and East Asian mega-cities encounter three formidable data engineering hurdles:
+      However, empirical researchers examining transit systems in emerging economies and East Asian mega-cities encounter three distinct data engineering hurdles:
     </p>
     <ol>
-      <li><strong>Proprietary Timetable Restrictions:</strong> Standard General Transit Feed Specification (GTFS) feeds are rarely made publicly accessible in raw format by domestic transit authorities, necessitating rigorous synthetic timetable reconstruction.</li>
+      <li><strong>Proprietary Timetable Restrictions:</strong> Standard General Transit Feed Specification (GTFS) feeds are rarely published in raw, machine-readable format by municipal transit authorities, necessitating calibrated synthetic timetable reconstruction from published headway brackets.</li>
       <li><strong>Coordinate Reference System &amp; Datum Obfuscation:</strong> Integrating open global geospatial data with domestic Chinese cartographic platforms requires navigating nonlinear coordinate shifts between standard WGS84 and the mandatory GCJ-02 ("Mars coordinates") datum.</li>
       <li><strong>Planar Multi-Tiered Topological Complexities:</strong> Large interchange hubs often comprise multiple underground levels, mezzanine passageways, and separate platform boxes that defy naive 2D point-node spatial models.</li>
     </ol>
@@ -324,18 +324,24 @@
     <h3>2.1 Multi-Source Spatial Data Compilation</h3>
     <p>Data ingestion integrates four complementary primary sources:</p>
     <ul>
-      <li><strong>OpenStreetMap (OSM) Vector Relations:</strong> Extracted using targeted Overpass QL queries over the bounding box [39.40&deg;N, 115.70&deg;E, 40.50&deg;N, 117.20&deg;E]. We filter for relations tagged <code>route=subway</code>, <code>route=light_rail</code>, and physical track ways tagged <code>railway=subway</code>. The raw geometry extract contains 13,902 way segments and 547 station node primitives.</li>
-      <li><strong>Beijing Municipal Commission of Transport (BMCT) Official Disclosures:</strong> Used to establish official corridor mileage, station naming conventions, opening chronology (1969-2026), and authorized operating speed ceilings.</li>
-      <li><strong>Operator Technical Specifications (Beijing Subway Co. &amp; Beijing MTR Corp.):</strong> Used to parameterize rolling stock configurations (6B, 8B, 8A, and Type-D Cinova EMUs), traction performance, and signaling headways.</li>
-      <li><strong>China Railway (CR) High-Speed Rail Timetable Database:</strong> Used to identify intermodal transfer parameters and mutual security clearance protocols across national rail terminals.</li>
+      <li><strong>OpenStreetMap (OSM) Vector Relations:</strong> Extracted using targeted Overpass QL queries over the bounding box [39.40&deg;N, 115.70&deg;E, 40.50&deg;N, 117.20&deg;E]. We filter for relations tagged <code>route=subway</code>, <code>route=light_rail</code>, and physical track ways tagged <code>railway=subway</code> or <code>railway=light_rail</code>. The raw geometry extract contains <strong>13,902 way segments</strong> and <strong>547 station node primitives</strong>.</li>
+      <li><strong>Beijing Municipal Commission of Transport (BMCT) Official Disclosures:</strong> Used to establish official corridor route lengths, station naming conventions, opening chronology (1969-2026), and authorized operating speed ceilings.</li>
+      <li><strong>Operator Technical Specifications (Beijing Subway Co. &amp; Beijing MTR Corp.):</strong> Used to parameterize rolling stock configurations, traction performance, and signaling headways:
+        <ul>
+          <li><strong>Type B Rolling Stock (6B / 8B):</strong> Standard-gauge metro cars (19.0 m length, 2.8 m width). A standard 6-car B-type train carries approximately 1,460 passengers at design capacity (6 pax/m&sup2;).</li>
+          <li><strong>Type A Wide-Body Rolling Stock (8A):</strong> High-capacity wide-body cars (22.0 m length, 3.0 m width). An 8-car A-type train (deployed on Line 6, Line 14, Line 16, and Line 17) carries approximately 2,520 passengers (+72.6% throughput expansion relative to 6B).</li>
+          <li><strong>Type-D Regional EMUs (Cinova):</strong> High-speed commuter trainsets operating at up to 160 km/h on express suburban corridors (e.g. Daxing Airport Express).</li>
+        </ul>
+      </li>
+      <li><strong>China Railway (CR) High-Speed Rail Timetable Database:</strong> Used to identify intermodal transfer parameters and "安检互认" (<em>mutual security clearance recognition</em>) protocols across national rail terminals (Beijing South, Beijing West, Qinghe, Beijing Chaoyang).</li>
     </ul>
 
     <h3>2.2 Coordinate Reference Systems &amp; Spatial Datum Reconciliation</h3>
     <p>Geographic coordinate handling requires strict transformation across three distinct coordinate spaces:</p>
     <ul>
-      <li><strong>WGS84 (<code>EPSG:4326</code>):</strong> The global standard geodetic datum used by OpenStreetMap and satellite GPS telemetry.</li>
-      <li><strong>UTM Zone 50N (<code>EPSG:32650</code>):</strong> A conformal transverse Mercator projection centered at 117&deg;E that preserves metric distances and local angles within Beijing (&approx; 116.4&deg;E, 39.9&deg;N). All geometric arc-length computations, track curve splines, and node clustering operations are strictly executed in this metric Cartesian space.</li>
-      <li><strong>GCJ-02 / BD-09 Datum Shifts:</strong> In mainland China, mandatory topographic obfuscation algorithms shift geographic coordinates nonlinearly by 100-700 meters. When validating our OSM-derived dataset against domestic digital basemaps, an inverse Krasovsky ellipsoid transformation is applied to prevent systematic spatial offset errors.</li>
+      <li><strong>WGS84 (<code>EPSG:4326</code>):</strong> The global standard ellipsoidal coordinate system used by OpenStreetMap and satellite GPS telemetry. Coordinates are expressed in decimal degrees (latitude, longitude).</li>
+      <li><strong>UTM Zone 50N (<code>EPSG:32650</code>):</strong> A conformal Transverse Mercator projection centered at central meridian 117&deg;E that preserves metric distances and local angles within Beijing (&approx; 116.4&deg;E, 39.9&deg;N). All geometric arc-length computations, track curve splines, and node clustering operations are strictly executed in this metric Cartesian space.</li>
+      <li><strong>GCJ-02 / BD-09 Datum Shifts:</strong> Under Chinese national surveying regulations, public domestic mapping platforms apply an encrypted nonlinear coordinate offset based on the Krasovsky 1940 ellipsoid to standard WGS84 coordinates. Uncorrected WGS84 tracks appear displaced by 100 to 700 meters relative to domestic digital basemaps (e.g. Gaode/Baidu). Our pipeline applies an inverse transformation to reconcile vector geometries without systematic spatial misalignment.</li>
     </ul>
 
     <!-- Section 3 -->
@@ -343,13 +349,35 @@
 
     <h3>3.1 Spatial Clustering &amp; L-Space Graph Synthesis</h3>
     <p>
-      Raw OSM data represents individual platform boxes and entrance portals as discrete point nodes (N = 547). To construct a topologically sound transport graph in L-space (space of stops; Sen et al., 2003), we apply a spatial clustering algorithm:
+      In transport topology, a transit network can be represented in multiple graph spaces (Sen et al., 2003; von Ferber et al., 2009):
+    </p>
+    <ul>
+      <li><strong>L-Space (Space of Stops):</strong> Vertices represent physical stations; an edge exists between two vertices if and only if they are consecutive stops on an operational transit line. This representation preserves geometric layout and route distance.</li>
+      <li><strong>P-Space (Space of Transfers):</strong> An edge connects any two vertices that can be reached on the same line without a transfer, reflecting direct journey reachability.</li>
+      <li><strong>C-Space (Space of Operations):</strong> Hypergraph modeling individual vehicle runs and physical track junctions.</li>
+    </ul>
+
+    <div class="diagram-box">
+GRAPH TOPOLOGY REPRESENTATIONS IN TRANSIT MODELING:
+
+1. L-Space (Space of Stops - Used in this study):
+   [Station A] --- Track Edge --- [Station B] --- Track Edge --- [Station C]
+   Preserves physical geometry, track mileage, and inter-station run times.
+
+2. P-Space (Space of Transfers):
+   [Station A] ------------------------------------------------- [Station C]
+          \---------------------- [Station B] -----------------------/
+   Models direct journey reachability (all collinear stations share an edge).
+    </div>
+
+    <p>
+      Raw OpenStreetMap data represents individual platform boxes, track splits, and entrance portals as discrete point nodes (N = 547). To construct a topologically sound transport graph in L-space, we apply a spatial clustering algorithm:
     </p>
     <div class="math-block">
       Cluster(u, v) &iff; dist_UTM(u, v) &le; &epsilon; &and; Match(Name_zh(u), Name_zh(v))
     </div>
     <p>
-      where &epsilon; = 150 meters. This merges multi-line interchange platforms into unified physical station complex vertices while preserving multi-edge line connectivity. The resulting topological multigraph contains exactly <strong>414 physical station vertices</strong> and <strong>493 inter-station track edges</strong>.
+      where &epsilon; = 150 meters. This merges multi-line interchange platforms into unified physical station complex vertices while preserving multi-edge line connectivity. The resulting topological multigraph G = (V, E) contains exactly <strong>414 physical station vertices</strong> and <strong>493 inter-station track edges</strong>.
     </p>
 
     <h3>3.2 Diurnal Timetable Synthesis &amp; Dispatching Dynamics</h3>
@@ -363,12 +391,18 @@
       <li><strong>Night Sweep (05:00 - 07:00 &amp; 20:00 - 23:30):</strong> Headways of 360s - 600s.</li>
     </ul>
     <p>
-      Station departure times are computed cumulatively based on inter-station metric distance, operating speed profile, acceleration (1.0 m/s&sup2;), braking (1.1 m/s&sup2;), and dwell margins (30s standard, 45s at major hubs). The resulting synthesized dataset generates <strong>8,603 discrete vehicle runs</strong> over 24 hours.
+      Here, <strong>headway</strong> denotes the temporal interval between consecutive train arrivals on the same track. A 100-second headway corresponds to an operating frequency of 36 trains per hour per direction. Station departure times are computed cumulatively based on inter-station metric distance d_k, operating speed profile v_max(L), acceleration (1.0 m/s&sup2;), braking (1.1 m/s&sup2;), and dwell margins (30s standard, 45s at major hubs). The resulting synthesized dataset generates <strong>8,603 discrete vehicle runs</strong> over 24 hours.
     </p>
 
     <h3>3.3 Kinematic Hermite Spline Engine</h3>
     <p>
-      Vehicle positions along physical track polylines are evaluated continuously using arc-length parameterized cubic Hermite splines. Tangent vectors are evaluated using Catmull-Rom finite differences, guaranteeing continuous C&sup1; velocity vectors through track curvature transitions.
+      Rather than rendering vehicles along piecewise linear segments that introduce artificial velocity discontinuities, vehicle positions along physical track polylines are evaluated continuously using arc-length parameterized cubic Hermite splines. Tangent vectors are evaluated using Catmull-Rom finite differences:
+    </p>
+    <div class="math-block">
+      m_k = (p_{k+1} - p_{k-1}) / 2
+    </div>
+    <p>
+      This mathematical formulation guarantees continuous first-derivative velocity vectors (C&sup1; continuity) through track curvature transitions, eliminating visual snapping during simulation playback.
     </p>
 
     <!-- Section 4 -->
@@ -416,16 +450,25 @@
       While the reconstructed dataset achieves high spatial and temporal fidelity, researchers using this model must account for four inherent methodological caveats:
     </p>
     <ul>
-      <li><strong>Deterministic Schedule vs. Stochastic Automatic Train Supervision (ATS):</strong> The synthetic timetable models planned schedule headways. In actual operations, peak-hour passenger door-holding causes dwell time stochasticity (&sigma; = 8s - 25s), inducing headway irregularity that requires real-time ATS intervention.</li>
+      <li><strong>Deterministic Schedule vs. Stochastic Automatic Train Supervision (ATS):</strong> The synthetic timetable models planned schedule headways. In actual operations, peak-hour passenger door-holding causes dwell time stochasticity (&sigma; = 8s - 25s), inducing headway irregularity that requires real-time ATS signaling intervention to regulate spacing.</li>
       <li><strong>2D Planar Abstraction of 3D Station Complexes:</strong> In L-space, multi-level subterranean interchanges (such as Xizhimen, where transferring from Line 13 to Line 2 involves a 300-meter walkway) are collapsed into a single topological vertex with a parameterized transfer impedance penalty (&Delta;t = 3.5 min).</li>
-      <li><strong>Static Transfer Impedance vs. Dynamic Crowd Friction:</strong> The model treats transfer impedance as fixed per station pair, whereas empirical transfer times during peak morning rushes expand by 50-100% due to unidirectional crowd flow control barriers.</li>
+      <li><strong>Static Transfer Impedance vs. Dynamic Crowd Friction:</strong> The model treats transfer impedance as fixed per station pair, whereas empirical transfer times during peak morning rushes expand by 50-100% due to unidirectional crowd flow control barriers (<em>客流控制</em>).</li>
       <li><strong>Workday Baseline Generalization:</strong> Timetables reflect standard Tuesday through Thursday workday dispatch schedules. Holiday travel surges (e.g. Spring Festival / National Day) are not captured in the baseline bundle.</li>
     </ul>
 
     <!-- Section 6 -->
     <h2>6. Topological Findings &amp; Structural Network Analytics</h2>
 
-    <h3>6.1 Orbital Bypass Load Distribution (Line 10 Mechanics)</h3>
+    <h3>6.1 Mathematical Formulation of Centrality &amp; Efficiency</h3>
+    <p>
+      To quantify network vulnerability, we calculate two core topological metrics:
+    </p>
+    <ul>
+      <li><strong>Betweenness Centrality (C_B):</strong> Measures the fraction of all shortest paths between all pairs of nodes that pass through node v. High betweenness centrality highlights critical bottleneck interchange hubs through which regional passenger flows must funnel.</li>
+      <li><strong>Global Network Efficiency (E):</strong> Quantifies the overall reachability of the network, defined as the harmonic mean of shortest-path distances across all node pairs. When a node v is disabled, the resilience loss &Delta;E measures the fractional reduction in global network efficiency.</li>
+    </ul>
+
+    <h3>6.2 Orbital Bypass Load Distribution (Line 10 Mechanics)</h3>
     <p>
       Beijing's dual orbital system (<strong>Line 2</strong>, 23.1 km; <strong>Line 10</strong>, 57.1 km) forms an orbital bypass system intercepting 23 radial corridors. Line 10 carries <strong>1.75 million daily passengers</strong> across 45 stations. Network shortest-path matrix simulations demonstrate that Line 10 intercepts <strong>38.2% of all cross-city origin-destination journeys</strong>. Without Line 10, cross-radial journeys would be forced through central core hubs (Xidan, Dongdan, Jianguomen), increasing directional transfer loading at core interchanges by <strong>28.4%</strong> and inducing concourse overcrowding.
     </p>
@@ -455,7 +498,7 @@
 +--------------------------------------------------------------------------------------------------+
     </div>
 
-    <h3>6.2 Targeted Hub Disruption &amp; Percolation Analysis</h3>
+    <h3>6.3 Targeted Hub Disruption &amp; Percolation Analysis</h3>
     <p>
       Systematic node removal across all 108 transfer complexes identifies the network's most critical single points of failure:
     </p>
@@ -529,17 +572,20 @@
       </table>
     </div>
     <p>
-      Targeted disruption of <strong>Xizhimen</strong> induces the most severe network degradation: forcing over 340,000 daily transferring riders onto indirect detour paths, increasing average travel time by +8.4 min, and reducing system efficiency by 18.4%.
+      Targeted disruption of <strong>Xizhimen</strong> induces the most severe network degradation: forcing over 340,000 daily transferring riders onto indirect detour paths, increasing average travel time by +8.4 min, and reducing global network efficiency by 18.4%.
     </p>
 
-    <h3>6.3 Peak Headway Saturation (The 100-Second Boundary)</h3>
+    <h3>6.4 Peak Headway Saturation (The 100-Second Boundary)</h3>
     <p>
-      On trunk lines (Line 1/Batong and Line 4/Daxing), morning peak headways have saturated at <strong>100 seconds</strong> (36 trains/hour/direction). Given mandatory station dwell times (30-45s) and safe braking margins, further capacity increases cannot be achieved via signaling compression alone. Future throughput expansion relies on trainset enlargement (6B to 8A) and parallel express relief corridors (Line 17 relieving Line 5; Line 19 relieving Line 4).
+      On trunk lines (Line 1/Batong and Line 4/Daxing), morning peak headways have saturated at <strong>100 seconds</strong> (36 trains/hour/direction). Given mandatory station dwell times (30-45s) and safe braking margins required by Automatic Train Protection (ATP) block signaling, further capacity increases cannot be achieved via signaling compression alone. Future throughput expansion relies on trainset enlargement (6B to 8A) and parallel express relief corridors (Line 17 relieving Line 5; Line 19 relieving Line 4).
     </p>
 
-    <h3>6.4 Intermodal Velocity Spectra &amp; Mutual Security Check Efficiency</h3>
+    <h3>6.5 Intermodal Velocity Spectra &amp; Mutual Security Check Efficiency</h3>
     <p>
-      Rolling stock operates across four velocity tiers: 70-80 km/h standard urban (Lines 1, 2, 4, 10); 100 km/h sub-express (Lines 7, Changping); 120 km/h GoA4 automated express (Lines 17, 19); and 160 km/h Type-D Cinova EMUs (Daxing Airport Express). Furthermore, institutional implementation of mutual security check clearance ("安检互认") at Beijing South, Beijing West, and Qinghe railway stations eliminates redundant security checks, reducing intermodal transfer dwell time by <strong>6.5 to 11.0 minutes per passenger</strong>.
+      Rolling stock operates across four velocity tiers: 70-80 km/h standard urban (Lines 1, 2, 4, 10); 100 km/h sub-express (Lines 7, Changping); 120 km/h GoA4 automated express (Lines 17, 19); and 160 km/h Type-D Cinova EMUs (Daxing Airport Express).
+    </p>
+    <p>
+      Furthermore, institutional implementation of "安检互认" (<em>mutual security clearance recognition</em>) at Beijing South, Beijing West, and Qinghe railway stations eliminates redundant security checks, reducing intermodal transfer dwell time by <strong>6.5 to 11.0 minutes per passenger</strong>. In Chinese mega-cities, where both national high-speed railway terminals and municipal subway networks enforce strict baggage X-ray scans at all entrance portals, establishing sealed, sterile transfer concourses delivers accessibility gains equivalent to billions in track construction.
     </p>
 
     <!-- Section 7 -->
@@ -564,6 +610,7 @@
       <li>Huang, Z., Willis, G., &amp; Liu, X. (2018). Spatial accessibility and orbital transit development in mega-city regions. <em>Applied Geography</em>, 94, 112-124.</li>
       <li>Latora, V., &amp; Marchiori, M. (2002). Is the Boston subway-grid a small-world network? <em>Physica A: Statistical Mechanics and its Applications</em>, 314(1-4), 109-113.</li>
       <li>Sen, P., Dasgupta, S., Chatterjee, A., Sreeram, P. A., Mukherjee, G., &amp; Manna, S. S. (2003). Small-world properties of the Indian railway network. <em>Physical Review E</em>, 67(3), 036106.</li>
+      <li>Tranos, E., Carrascal-Incera, A., &amp; Willis, G. (2022). Using the web to predict regional trade flows: data extraction, modelling, and validation. <em>Annals of the American Association of Geographers</em>, 113(1), 168-189.</li>
       <li>Von Ferber, C., Holovatch, T., Holovatch, Y., &amp; Palchykov, V. (2009). Public transport networks: empirical analysis and modeling. <em>The European Physical Journal B</em>, 68(2), 261-275.</li>
       <li>Willis, G., &amp; Tranos, E. (2021). Using "Big Data" to understand the impacts of Uber on taxis in New York City. <em>Travel Behaviour and Society</em>, 22, 94-107.</li>
     </ul>
