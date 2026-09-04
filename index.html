@@ -32,6 +32,7 @@
     <nav class="masthead__nav">
       <a href="index.html" aria-current="page">Home</a>
       <a href="portfolio/index.html">Work</a>
+      <a href="articles/index.html">Articles</a>
       <a href="publications/index.html">Publications</a>
       <a href="about/index.html">About</a>
     </nav>
@@ -88,14 +89,20 @@
 
     <div class="index-list">
 
-      <a class="index-row" href="https://transitflow-2s4.pages.dev" target="_blank" rel="noopener">
+      <div class="index-row">
         <span class="index-row__tag">Kinematic Simulation · Network Graph</span>
         <span class="index-row__body">
-          <h3>TransitFlow - 24-hour diurnal metro simulation</h3>
+          <a href="https://transitflow-2s4.pages.dev" target="_blank" rel="noopener" style="display: block;">
+            <h3>TransitFlow - 24-hour diurnal metro simulation</h3>
+          </a>
           <p>Physics-based urban transit simulation modeling spline kinematics, UTM metric projections, NetworkX resilience analytics, and browser-based GTFS onboarding across global metro networks.</p>
+          <div style="margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="articles/beijing-subway-network-analytics.html" class="btn" style="padding: 5px 14px; font-size: 11px;">Network Paper →</a>
+            <a href="https://transitflow-2s4.pages.dev" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 5px 14px; font-size: 11px;">Live Demo ↗</a>
+          </div>
         </span>
         <span class="index-row__meta">Python · GTFS · NetworkX · Leaflet · pyproj</span>
-        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
+        <a href="articles/beijing-subway-network-analytics.html" class="index-row__preview index-row__preview--mark" aria-hidden="true" style="pointer-events: auto;">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <path d="M8 46 C24 46 28 18 56 18" opacity="0.4"/>
             <path d="M8 18 C20 18 36 46 56 46" opacity="0.4"/>
@@ -106,8 +113,8 @@
             <circle cx="44" cy="46" r="2" fill="currentColor" opacity="0.6"/>
             <circle cx="14" cy="18" r="2" fill="currentColor" opacity="0.6"/>
           </svg>
-        </span>
-      </a>
+        </a>
+      </div>
 
       <div class="index-row">
         <span class="index-row__tag">Full-Stack · Local AI · Web Scraping</span>
@@ -189,6 +196,43 @@
         <span class="index-row__preview"><img src="img/thumbs/Animated_NTL.jpg" alt="" loading="lazy"></span>
       </a>
 
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Recent articles &amp; notes</h2>
+      <a href="articles/index.html" class="section-head__link">All articles →</a>
+    </div>
+    <div class="index-list">
+      <div class="index-row">
+        <span class="index-row__tag">Urban Rail · Network Topology</span>
+        <span class="index-row__body">
+          <a href="articles/beijing-subway-network-analytics.html" style="display:block;">
+            <h3>Spatial Data Engineering, Timetable Reconstruction, and Topological Resilience in Mega-Scale Urban Rail Networks: The Case of the Beijing Subway</h3>
+          </a>
+          <p>Ingesting 13,902 OSM segments, reconciling WGS84 with metric UTM Zone 50N and GCJ-02 datum shifts, synthesizing an 8,603-trip diurnal timetable, and evaluating orbital ring bypass mechanics alongside hub disruption resilience.</p>
+          <div style="margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="articles/beijing-subway-network-analytics.html" class="btn" style="padding: 5px 14px; font-size: 11px;">Read Article →</a>
+            <a href="https://transitflow-2s4.pages.dev/analytics.html" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 5px 14px; font-size: 11px;">Interactive Portal ↗</a>
+          </div>
+        </span>
+        <span class="index-row__meta">Empirical Paper · 12 min read</span>
+        <a href="articles/beijing-subway-network-analytics.html" class="index-row__preview index-row__preview--mark" aria-hidden="true" style="pointer-events: auto;">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
+            <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="1.2" opacity="0.4"/>
+            <circle cx="32" cy="32" r="12" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="32" cy="10" r="2.5" fill="var(--ember)"/>
+            <circle cx="54" cy="32" r="2.5" fill="var(--ember)"/>
+            <circle cx="32" cy="54" r="2.5" fill="var(--ember)"/>
+            <circle cx="10" cy="32" r="2.5" fill="var(--ember)"/>
+            <line x1="10" y1="32" x2="54" y2="32" stroke="var(--amber)" opacity="0.8"/>
+            <line x1="32" y1="10" x2="32" y2="54" stroke="var(--amber)" opacity="0.8"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
