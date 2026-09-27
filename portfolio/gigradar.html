@@ -44,8 +44,31 @@
   <div class="prose"><p>The difficult part is keeping event information consistent across sources. Dates change, the same gig appears in more than one place, and a missing listing doesn’t necessarily mean an event is cancelled.</p><p>I’m working on source ingestion, event identity and retaining the evidence behind each update. A ticket-status label should be traceable to a source.</p></div>
 </div></section>
 <section class="section"><div class="wrap split">
-  <h2>Demo and development</h2>
-  <div class="prose"><p>The public demo is a preview of the interface. Treat its listings as demo data, and check the venue or ticket seller for current details.</p><p>The development project uses a Python backend, SvelteKit and PostgreSQL. Source collection and data checks are developed separately from the public demo.</p><p>Flyer extraction and more detailed event signals are areas I’m exploring. They are not promises about what the demo can currently do.</p></div>
+  <h2>What exists now</h2>
+  <div>
+    <dl class="fields">
+      <dt>Public demo</dt>
+      <dd>A static event snapshot for trying the interface without exposing the development system or running collection jobs online.</dd>
+      <dt>Development app</dt>
+      <dd>Event, venue and artist records, alongside map, saved and favourites views.</dd>
+      <dt>Data collection</dt>
+      <dd>Manual local pulls through configured source adapters, followed by normalisation, identity checks and snapshot export.</dd>
+      <dt>Still in progress</dt>
+      <dd>Broader source coverage, evidence-based urgency labels and interface polish. Scheduled collection comes later.</dd>
+    </dl>
+  </div>
+</div></section>
+<section class="section"><div class="wrap split">
+  <h2>One useful decision</h2>
+  <div class="prose"><p>I separated the public demo from the development application. Collection and validation can change while I work out which sources are reliable; the public site receives a checked snapshot and stays cheap and safe to host.</p><p><code>sources → normalise → retain evidence → export snapshot → public demo</code></p></div>
+</div></section>
+<section class="section"><div class="wrap split">
+  <h2>What I’ve learned</h2>
+  <div class="prose"><p>The interface is the easy part. The real work is deciding when two listings describe the same event, recording where each fact came from and handling a source disappearing without silently calling the event cancelled.</p><p>Flyer extraction and more detailed event signals are areas I’m exploring. They are not promises about what the demo can currently do.</p></div>
+</div></section>
+<section class="section"><div class="wrap split">
+  <h2>Try the demo</h2>
+  <div class="prose"><p>The public site is a preview using snapshot data. Check the venue or ticket seller before relying on an event listing.</p><p><a class="btn" href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener">Open GigRadar ↗</a></p></div>
 </div></section>
 </main>
 
@@ -64,4 +87,3 @@
 <script src="../assets/main.js" defer></script>
 </body>
 </html>
-
