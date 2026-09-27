@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Interactive maps, spatial data pipelines, and research studies by George Willis. Built in Python, R, QGIS, Leaflet, pgvector, and Ollama.">
+<meta name="description" content="Projects, maps and data studies by George Willis. London gigs, transport networks, housing and spatial research.">
 <meta name="author" content="George Willis">
 <title>Work - George Willis</title>
 
@@ -21,12 +21,13 @@
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead__row">
-    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong><span>/</span>Geodata</a>
-    <button class="masthead__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
-    <nav class="masthead__nav">
+    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong></a>
+    <button class="masthead__toggle" aria-controls="site-nav" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav class="masthead__nav" id="site-nav" aria-label="Main navigation">
       <a href="../index.html">Home</a>
       <a href="../portfolio/index.html" aria-current="page">Work</a>
       <a href="../articles/index.html">Articles</a>
@@ -35,12 +36,13 @@
     </nav>
   </div>
 </header>
+<main id="main">
 
 <section class="section--tight" style="padding-top:56px;">
   <div class="wrap">
     <p class="kicker">Full index</p>
-    <h1 style="font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,52px); margin-top:14px; max-width:18ch;">Maps &amp; data studies</h1>
-    <p style="color:var(--dust); max-width:56ch; margin-top:16px; font-size:15.5px;">Thirteen projects kept because they answer a concrete question: interactive maps, satellite image processing, and econometric models in R and Python. The rest has been retired rather than kept around as padding.</p>
+    <h1 style="font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,52px); margin-top:14px; max-width:18ch;">Projects &amp; data studies</h1>
+    <p style="color:var(--dust); max-width:56ch; margin-top:16px; font-size:15.5px;">Personal projects, research and earlier data studies. Some are working demos; others are notebooks showing the analysis.</p>
   </div>
 </section>
 
@@ -55,19 +57,19 @@
     <div class="index-list">
 
       <div class="index-row" data-cat="map">
-        <span class="index-row__tag">Kinematic Simulation · Network Graph</span>
+        <span class="index-row__tag">Transport · Networks</span>
         <span class="index-row__body">
           <a href="https://transitflow-2s4.pages.dev" target="_blank" rel="noopener" style="display: block;">
-            <h3>TransitFlow - 24-hour diurnal metro simulation</h3>
+            <h3>TransitFlow — metro network simulation</h3>
           </a>
-          <p>Physics-based urban transit simulation modeling spline kinematics, UTM metric projections, NetworkX resilience analytics, and browser-based GTFS onboarding across global metro networks.</p>
+          <p>A metro network model with a synthetic timetable and station disruption tests.</p>
           <div style="margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a href="../articles/beijing-subway-network-analytics.html" class="btn" style="padding: 5px 14px; font-size: 11px;">Network Paper →</a>
-            <a href="https://transitflow-2s4.pages.dev" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 5px 14px; font-size: 11px;">Live Demo ↗</a>
+            <a href="../articles/beijing-subway-network-analytics.html" class="btn" style="padding: 5px 14px; font-size: 11px;">Build notes →</a>
+            <a href="https://transitflow-2s4.pages.dev" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 5px 14px; font-size: 11px;">Open demo ↗</a>
           </div>
         </span>
         <span class="index-row__meta">Python · GTFS · NetworkX · Leaflet · pyproj</span>
-        <a href="../articles/beijing-subway-network-analytics.html" class="index-row__preview index-row__preview--mark" aria-hidden="true" style="pointer-events: auto;">
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <path d="M8 46 C24 46 28 18 56 18" opacity="0.4"/>
             <path d="M8 18 C20 18 36 46 56 46" opacity="0.4"/>
@@ -78,30 +80,30 @@
             <circle cx="44" cy="46" r="2" fill="currentColor" opacity="0.6"/>
             <circle cx="14" cy="18" r="2" fill="currentColor" opacity="0.6"/>
           </svg>
-        </a>
+        </span>
       </div>
 
       <div class="index-row" data-cat="map">
-        <span class="index-row__tag">Full-Stack · Local AI · Web Scraping</span>
+        <span class="index-row__tag">In development · London</span>
         <span class="index-row__body">
           <a href="gigradar.html" style="display: block;">
-            <h3>GigRadar - London live music radar &amp; case study</h3>
+            <h3>GigRadar — London gigs</h3>
           </a>
-          <p>Personal London live-music radar tracking grassroots venue calendars, using local vision models for flyer parsing and pgvector for deduplication.</p>
+          <p>A project in development to bring events from small London venues into one place.</p>
           <div style="margin-top: 12px; display:flex; gap:10px;">
             <a href="gigradar.html" class="btn" style="padding: 5px 14px; font-size: 11px;">Case Study →</a>
-            <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 5px 14px; font-size: 11px;">Live Demo ↗</a>
+            <a href="https://gigradar-51y.pages.dev/" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 5px 14px; font-size: 11px;">Open demo ↗</a>
           </div>
         </span>
-        <span class="index-row__meta">FastAPI · SvelteKit · pgvector · Ollama · Cloudflare</span>
-        <a href="gigradar.html" class="index-row__preview index-row__preview--mark" aria-hidden="true" style="pointer-events: auto;">
+        <span class="index-row__meta">Python · SvelteKit · PostgreSQL</span>
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <polygon points="32 8, 54 50, 10 50" opacity="0.3"/>
             <circle cx="32" cy="32" r="3" fill="currentColor"/>
             <circle cx="46" cy="42" r="2.5" fill="var(--amber)"/>
             <circle cx="18" cy="42" r="2.5" fill="var(--amber)"/>
           </svg>
-        </a>
+        </span>
       </div>
 
       <a class="index-row" data-cat="map" href="R/Step1.html">
@@ -246,9 +248,10 @@
   </div>
 </section>
 
+</main>
 <footer class="footer">
   <div class="wrap footer__row">
-    <span class="footer__mark">George Willis - Geodata &amp; Spatial Analysis</span>
+    <span class="footer__mark">George Willis</span>
     <div class="footer__links">
       <a href="mailto:gcw519email@proton.me">Email</a>
       <a href="https://uk.linkedin.com/in/gwilisli26" target="_blank" rel="noopener">LinkedIn</a>

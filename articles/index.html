@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Technical articles, empirical data engineering writeups, and network analytics case studies by George Willis.">
+<meta name="description" content="Notes by George Willis on projects, data and development decisions.">
 <meta name="author" content="George Willis">
 <title>Articles - George Willis</title>
 
@@ -22,12 +22,13 @@
 <script src="../assets/main.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead__row">
-    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong><span>/</span>Geodata</a>
-    <button class="masthead__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
-    <nav class="masthead__nav">
+    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong></a>
+    <button class="masthead__toggle" aria-controls="site-nav" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav class="masthead__nav" id="site-nav" aria-label="Main navigation">
       <a href="../index.html">Home</a>
       <a href="../portfolio/index.html">Work</a>
       <a href="index.html" aria-current="page">Articles</a>
@@ -36,12 +37,13 @@
     </nav>
   </div>
 </header>
+<main id="main">
 
 <section class="section--tight" style="padding-top:56px; border-bottom:1px solid var(--hair);">
   <div class="wrap">
     <p class="kicker">Writing &amp; Research Notes</p>
     <h1 style="font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,52px); margin-top:14px; max-width:18ch;">Articles &amp; technical notes</h1>
-    <p style="color:var(--dust); max-width:58ch; margin-top:16px; margin-bottom:24px; font-size:15.5px;">Long-form technical notes, data engineering writeups, and network analytics case studies.</p>
+    <p style="color:var(--dust); max-width:58ch; margin-top:16px; margin-bottom:24px; font-size:15.5px;">Notes on what I’ve built, the data behind it and the choices along the way.</p>
   </div>
 </section>
 
@@ -58,12 +60,12 @@
           <p>How TransitFlow turns OpenStreetMap data and published transport information into a network model, synthetic timetable, and set of resilience tests.</p>
           <div style="margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap;">
             <a href="beijing-subway-network-analytics.html" class="btn" style="padding: 6px 14px; font-size: 11px;">Read Article &rarr;</a>
-            <a href="https://transitflow-2s4.pages.dev/analytics.html" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 6px 14px; font-size: 11px;">Live Analytics Portal &#x2197;</a>
+            <a href="https://transitflow-2s4.pages.dev/analytics.html" target="_blank" rel="noopener" class="btn btn--ghost" style="padding: 6px 14px; font-size: 11px;">Network demo &#x2197;</a>
             <a href="beijing-subway-network-analytics.md" download class="btn btn--ghost" style="padding: 6px 14px; font-size: 11px;">Markdown (.md) &darr;</a>
           </div>
         </span>
         <span class="index-row__meta">TransitFlow · Technical note</span>
-        <a href="beijing-subway-network-analytics.html" class="index-row__preview index-row__preview--mark" aria-hidden="true" style="pointer-events: auto;">
+        <span class="index-row__preview index-row__preview--mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--amber)">
             <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="1.2" opacity="0.4"/>
             <circle cx="32" cy="32" r="12" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
@@ -74,7 +76,7 @@
             <line x1="10" y1="32" x2="54" y2="32" stroke="var(--amber)" opacity="0.8"/>
             <line x1="32" y1="10" x2="32" y2="54" stroke="var(--amber)" opacity="0.8"/>
           </svg>
-        </a>
+        </span>
       </div>
 
     </div>
@@ -86,9 +88,10 @@
   </div>
 </section>
 
+</main>
 <footer class="footer">
   <div class="wrap footer__row">
-    <span class="footer__mark">George Willis - Geodata &amp; Spatial Analysis</span>
+    <span class="footer__mark">George Willis</span>
     <div class="footer__links">
       <a href="mailto:gcw519email@proton.me">Email</a>
       <a href="https://uk.linkedin.com/in/gwilisli26" target="_blank" rel="noopener">LinkedIn</a>

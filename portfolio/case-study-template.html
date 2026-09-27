@@ -10,11 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead__row">
-    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong><span>/</span>Geodata</a>
-    <nav class="masthead__nav">
+    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong></a>
+    <button class="masthead__toggle" aria-controls="site-nav" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav class="masthead__nav" id="site-nav" aria-label="Main navigation">
       <a href="../index.html">Home</a>
       <a href="index.html" aria-current="page">Work</a>
       <a href="../publications/index.html">Publications</a>
@@ -23,7 +25,7 @@
   </div>
 </header>
 
-<main class="case-study">
+<main id="main" class="case-study">
   <!-- Hero -->
   <section class="cs-hero wrap">
     <span class="cs-hero__status">Status Badge</span>
@@ -98,5 +100,6 @@
   </section>
 </main>
 
+<script src="../assets/main.js" defer></script>
 </body>
 </html>
