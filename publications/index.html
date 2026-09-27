@@ -21,12 +21,13 @@
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead__row">
-    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong><span>/</span>Geodata</a>
-    <button class="masthead__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
-    <nav class="masthead__nav">
+    <a href="../index.html" class="masthead__mark"><strong>George Willis</strong></a>
+    <button class="masthead__toggle" aria-controls="site-nav" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav class="masthead__nav" id="site-nav" aria-label="Main navigation">
       <a href="../index.html">Home</a>
       <a href="../portfolio/index.html">Work</a>
       <a href="../articles/index.html">Articles</a>
@@ -35,6 +36,7 @@
     </nav>
   </div>
 </header>
+<main id="main">
 
 <section class="section--tight" style="padding-top:56px; border-bottom:1px solid var(--hair);">
   <div class="wrap">
@@ -74,9 +76,10 @@
   </div>
 </section>
 
+</main>
 <footer class="footer">
   <div class="wrap footer__row">
-    <span class="footer__mark">George Willis - Geodata &amp; Spatial Analysis</span>
+    <span class="footer__mark">George Willis</span>
     <div class="footer__links">
       <a href="mailto:gcw519email@proton.me">Email</a>
       <a href="https://uk.linkedin.com/in/gwilisli26" target="_blank" rel="noopener">LinkedIn</a>
