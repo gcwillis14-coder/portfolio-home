@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Beijing Subway: Spatial Data Engineering and Network Resilience - George Willis</title>
-<meta name="description" content="George Willis on building the Beijing Subway network model for TransitFlow, including spatial processing, timetable synthesis, and resilience analysis.">
+<title>Modelling the Beijing metro — George Willis</title>
+<meta name="description" content="The network data, simulated services and interchange indicators behind TransitFlow.">
 <meta name="author" content="George Willis">
 
 <link rel="apple-touch-icon" sizes="180x180" href="../img/favico/apple-touch-icon.png">
@@ -67,116 +67,42 @@
 
 <main id="main" class="article-container">
   <header class="article-header">
-    <span class="article-kicker">TransitFlow · Technical note</span>
-    <h1 class="article-title">Beijing Subway: Spatial Data Engineering and Network Resilience</h1>
-    <div class="article-meta">
-      <div><strong>Author:</strong> George Willis</div>
-      <div><strong>Keywords:</strong> Transit data engineering, OpenStreetMap, timetable synthesis, spatial data, network analysis, resilience</div>
-    </div>
+    <span class="article-kicker">TransitFlow · Build notes</span>
+    <h1 class="article-title">Modelling the Beijing metro</h1>
+    <p>The network data, simulated services and interchange indicators behind TransitFlow.</p>
     <div class="article-actions">
-      <a href="https://transitflow-2s4.pages.dev/analytics.html" target="_blank" rel="noopener" class="btn" style="background:var(--ember); color:var(--ink); font-weight:600;">Launch Beijing Analytics ↗</a>
-      <a href="https://transitflow-2s4.pages.dev/" target="_blank" rel="noopener" class="btn btn--ghost">Launch TransitFlow ↗</a>
-      <a href="https://github.com/gcwillis14-coder/transitflow" target="_blank" rel="noopener" class="btn btn--ghost">GitHub Repository ↗</a>
-      <a href="beijing-subway-network-analytics.md" download class="btn btn--ghost">Download .md Source ↓</a>
+      <a href="https://transitflow-2s4.pages.dev/analytics" target="_blank" rel="noopener" class="btn">Explore the network ↗</a>
+      <a href="https://transitflow-2s4.pages.dev/" target="_blank" rel="noopener" class="btn btn--ghost">Open simulation ↗</a>
+      <a href="https://github.com/gcwillis14-coder/transitflow" target="_blank" rel="noopener" class="btn btn--ghost">Project source (private) ↗</a>
+      <a href="beijing-subway-network-analytics.md" download class="btn btn--ghost">Download these notes ↓</a>
     </div>
   </header>
-
   <article class="article-prose">
-    <h2>Overview</h2>
-    <p>TransitFlow is an open spatial data and simulation project built around the Beijing Subway. It combines OpenStreetMap data, published transport information, spatial transformations and a synthetic timetable to build a network model for simulation and resilience analysis.</p>
-    <p>The difficult part was turning inconsistent public data into a single network that the application could use consistently. The workflow covers data extraction, station matching, coordinate handling, timetable generation and network analysis.</p>
-    <p>The current model contains <strong>25 operational corridors, 414 station complexes and 493 inter-station edges</strong>, with <strong>8,603 simulated vehicle runs</strong> across a 24-hour service day.</p>
-    <p>The figures below are outputs from the TransitFlow model and should be read alongside its assumptions and limitations.</p>
-
-    <h2>1. Building the network</h2>
-    <p>Transit data rarely arrives in one clean package. OpenStreetMap provides detailed geometry, while timetable and operating information may be published separately and at a different level of detail.</p>
-    <p>TransitFlow focuses on three practical problems:</p>
-    <ol>
-      <li><strong>Building the network</strong> from OpenStreetMap station and track data.</li>
-      <li><strong>Using a common coordinate system</strong> so distances and geometry can be calculated in metres.</li>
-      <li><strong>Creating a usable timetable</strong> when a complete public GTFS feed is not available.</li>
-    </ol>
-
-    <h2>2. Data and spatial processing</h2>
-    <h3>OpenStreetMap</h3>
-    <p>OpenStreetMap provides the underlying station and track geometry. The Beijing extraction used for the model contains <strong>13,902 railway way segments</strong> and <strong>547 raw station nodes</strong> before cleaning and consolidation.</p>
-    <p>Station records are matched and clustered so that multiple platforms belonging to the same physical interchange can be represented by a single station complex where appropriate. The final graph contains <strong>414 station vertices</strong> and <strong>493 inter-station edges</strong>.</p>
-
-    <h3>Coordinate systems</h3>
-    <p>OpenStreetMap coordinates are provided in WGS84 (<code>EPSG:4326</code>). Distance calculations are performed after reprojection to <strong>UTM Zone 50N (<code>EPSG:32650</code>)</strong>, giving metric coordinates for local geometry calculations.</p>
-    <p>Where Chinese mapping coordinates such as GCJ-02 or BD-09 are involved, the project accounts for the differences rather than treating them as interchangeable.</p>
-
-    <h3>Network representation</h3>
-    <p>TransitFlow uses an <strong>L-space</strong> representation for its main network graph. Stations are vertices and consecutive stops on a line form edges. This makes it straightforward to attach geometry, distance and simulated running time to each edge.</p>
-
-    <h2>3. Timetable reconstruction</h2>
-    <p>A complete public GTFS feed was not available for the model, so TransitFlow generates a synthetic 24-hour timetable from published headway ranges and operating assumptions.</p>
-    <p>Headways vary through the day. For each line, trains are generated in both directions and station arrival and departure times are calculated from inter-station distance, an assumed operating-speed profile, acceleration and braking parameters, and station dwell times.</p>
-    <p>This produces <strong>8,603 simulated vehicle runs</strong> over a 24-hour day. The timetable is intended to give the simulation a plausible operating pattern, not to reproduce the real Beijing Subway timetable exactly.</p>
-
-    <h2>4. Smooth vehicle movement</h2>
-    <p>The browser simulation needs trains to move smoothly along curved track geometry. TransitFlow therefore evaluates positions along the track using arc-length parameterisation and cubic Hermite interpolation, with tangent estimates derived from neighbouring geometry points.</p>
-    <p>This keeps the animation continuous through bends and between track points. It is a simulation and visualisation technique, not a claim about the exact speed profile of real trains.</p>
-
-    <h2>5. Model checks</h2>
-    <h3>Spatial checks</h3>
-    <p>A sample of station locations was compared with reference imagery and mapping data. The model reports a mean station error of <strong>6.42 metres</strong> and a maximum of <strong>11.8 metres</strong> for the sample used in the project.</p>
-
-    <h3>Dispatch volume</h3>
-    <p>The generated timetable contains <strong>8,603 runs</strong>. The project compares this with an external daily dispatch figure of approximately <strong>8,750 runs</strong>, a difference of <strong>1.68%</strong>.</p>
-    <p>This is a useful scale check, but it does not show that the synthetic schedule matches the real service pattern.</p>
-
-    <h3>Travel times</h3>
-    <p>The model also compares simulated journey times with values from the Beijing Subway journey planner. For the sample used by the project:</p>
-    <div class="diagram-box">T_simulated = 0.991 × T_official + 0.42 min
-R² = 0.984   |   RMSE = 1.42 min</div>
-    <p>The sampled routes therefore produced similar journey times. These results should be treated as a check on the model, not as proof that the complete operating system has been reproduced.</p>
-
-    <h2>6. Network resilience</h2>
-    <p>With the network in place, graph metrics can be used to identify stations whose removal has a large effect on connectivity and journey times.</p>
-    <p>TransitFlow uses measures including <strong>betweenness centrality</strong> and <strong>global network efficiency</strong>. A station with high betweenness matters because many shortest paths pass through it. Removing it can force journeys onto longer routes.</p>
-
-    <h3>Line 10 and orbital connectivity</h3>
-    <p>Line 10 is interesting because its orbital route provides an alternative to travelling through central Beijing. In the model, reducing access to the orbital route pushes some cross-city journeys towards central interchanges.</p>
-    <p>The model estimates that Line 10 is involved in <strong>38.2% of cross-city origin-destination journeys</strong> in the simulated network. This is a model result, not a direct observation of passenger movements.</p>
-
-    <h3>Station disruption</h3>
-    <p>The model also tests individual station failures. <strong>Xizhimen</strong> produces the largest disruption in the current network configuration, with an estimated <strong>8.4-minute increase in average journey time</strong> when removed.</p>
-    <p>The useful result is the relative vulnerability of the network. It is not a prediction of exactly what a real closure would do on a particular day.</p>
-
-    <h2>7. Limitations</h2>
-    <p><strong>Synthetic timetable.</strong> The timetable is generated from published headway assumptions rather than a complete operational feed. Real services vary with disruption, short turns, engineering work and day type.</p>
-    <p><strong>Station geometry.</strong> Large underground interchanges are simplified to a station-level graph. Walking routes inside stations are represented by estimated transfer costs rather than a full pedestrian network.</p>
-    <p><strong>Crowding.</strong> Transfer and dwell penalties are represented by fixed parameters. The simulation does not model individual passengers moving through crowded platforms and concourses.</p>
-    <p><strong>Calibration.</strong> The comparison figures are checks against selected external references. They are not a formal validation of the entire operating system.</p>
-
-    <h2>8. What the project shows</h2>
-    <p>The main lesson from TransitFlow is that the difficult part of a transport simulation is often the data work around the model.</p>
-    <p>Building the network meant deciding how to merge station records, handle coordinates, represent interchanges and create a timetable from incomplete public information. Once those pieces were in place, standard graph methods could be used to explore resilience and alternative routes.</p>
-    <p>It also shows why model assumptions need to stay visible. A polished simulation can look more precise than its inputs justify if synthetic data is presented as observed operational data.</p>
-    <p>For me, that is the useful part of TransitFlow: taking messy public geospatial data and turning it into something that can be explored, tested and extended.</p>
-
-    <h2>References</h2>
-    <ul class="references-list">
-      <li>Albert, R., Jeong, H., &amp; Barabási, A. L. (2000). Error and attack tolerance of complex networks. <em>Nature</em>, 406(6794), 378-382.</li>
-      <li>Cats, O. (2016). Topological analysis of a Swiss rail network: A vulnerability and centrality perspective. <em>Journal of Transport Geography</em>, 54, 281-293.</li>
-      <li>Cervero, R. (1998). <em>The Transit Metropolis: A Global Inquiry</em>. Island Press.</li>
-      <li>Derrible, S., &amp; Kennedy, C. (2010). The complexity and robustness of metro networks. <em>Physica A: Statistical Mechanics and its Applications</em>, 389(17), 3678-3691.</li>
-      <li>Latora, V., &amp; Marchiori, M. (2002). Is the Boston subway-grid a small-world network? <em>Physica A: Statistical Mechanics and its Applications</em>, 314(1-4), 109-113.</li>
-      <li>Sen, P., Dasgupta, S., Chatterjee, A., Sreeram, P. A., Mukherjee, G., &amp; Manna, S. S. (2003). Small-world properties of the Indian railway network. <em>Physical Review E</em>, 67(3), 036106.</li>
-      <li>Von Ferber, C., Holovatch, T., Holovatch, Y., &amp; Palchykov, V. (2009). Public transport networks: empirical analysis and modeling. <em>The European Physical Journal B</em>, 68(2), 261-275.</li>
-    </ul>
-
-    <h2>Data and technical artifacts</h2>
-    <p>The TransitFlow source code and generated data are available in the project repository:</p>
+    <h2>A metro network to explore</h2>
+    <p>TransitFlow is a personal project built around an interest in transport networks and maps. The Beijing example brings together station and track data, simulated services and a few ways to examine how the network connects.</p>
+    <p>The useful questions are fairly simple: which stations connect several lines, where do routes depend on a small number of interchanges, and how should those relationships appear on a map?</p>
+    <h2>Building the network</h2>
+    <p>The data work starts with station and track geometry. Station names and line membership need to agree before the records can form a usable graph. In the browser demo, stations are nodes and neighbouring stops form connections.</p>
+    <p>The Python project and the prepared web demo are separate parts of the work. The public pages read a generated JSON bundle; they do not run the Python pipeline or collect new data when you open them.</p>
+    <h2>The moving trains</h2>
+    <p>The timetable is generated, rather than taken from a live operating feed. The current web-data generator uses service windows with different headways, a 25-second dwell assumption and 110-second intervals between successive stops.</p>
+    <p>Those choices produce a modelled day that can be explored in the browser. They do not reproduce the actual timetable, train positions or passenger movements. The animation is a way to inspect the model, rather than evidence that its operating assumptions are correct.</p>
+    <h2>Connections and interchange indicators</h2>
+    <p>The network analysis includes degree and betweenness centrality. Degree describes connections; betweenness measures how often a station lies on shortest paths through the graph.</p>
+    <p>The dashboard’s interchange panel displays precomputed indicators from the bundle. Its vulnerability score is a heuristic based on line count and centrality, not a recalculation of services during a station closure. It should not be read as a forecast of disruption or additional journey time.</p>
+    <h2>What the model leaves out</h2>
+    <p>A station-level graph simplifies the walking routes within an interchange. The generated timetable does not capture service changes, crowding, short turns or day-to-day disruption.</p>
+    <p>Some network and operating figures are stored as reference values in the data generator. They need their own provenance before they can support comparisons with the real system. I’ve kept the description here to the mechanisms that can be traced in the current code.</p>
+    <p>The project is useful to me as a way to work through those choices and build something I can inspect. A working map is also a useful incentive to finish cleaning the data.</p>
+    <h2>Files behind the demo</h2>
+    <p>The project repository is private. These paths identify the source and published data for readers with access:</p>
     <ul>
-      <li><strong>Repository:</strong> <a href="https://github.com/gcwillis14-coder/transitflow">github.com/gcwillis14-coder/transitflow</a></li>
-      <li><strong>Topological specification:</strong> <code>configs/beijing.yml</code></li>
-      <li><strong>Network bundle:</strong> <code>web/data/beijing_bundle.json</code></li>
-      <li><strong>Interactive analytics:</strong> <a href="https://transitflow-2s4.pages.dev/analytics.html">TransitFlow Live Analytics</a></li>
+      <li><code>web/generate_24h_gtfs.py</code> prepares the browser dataset.</li>
+      <li><code>web/data/beijing_bundle.json</code> holds geometry, simulated trips and network indicators.</li>
+      <li><code>web/js/app.js</code> contains the simulation interface.</li>
+      <li><code>web/js/analytics.js</code> displays the network analysis.</li>
     </ul>
-    <div class="diagram-box">uv run pytest tests/
-python3 -m http.server 8089 --bind 127.0.0.1 --directory web</div>
+    <p><a href="../portfolio/index.html">Back to the projects →</a></p>
   </article>
 </main>
 </body>

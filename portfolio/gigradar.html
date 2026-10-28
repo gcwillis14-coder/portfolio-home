@@ -32,43 +32,24 @@
 <section class="section"><div class="wrap">
   <p class="kicker">Personal project · In development</p>
   <h1 class="page-title">GigRadar</h1>
-  <p class="intro__text">A way to keep up with small London venues and find gigs before I’ve missed them.</p>
+  <p class="intro__text">Finding gigs before I’ve missed them.</p>
   <div class="hero__actions"><a class="btn" href="https://gigapp.pages.dev/" target="_blank" rel="noopener">Open demo ↗</a><a class="link-arrow" href="index.html">All projects →</a></div>
 </div></section>
 <section class="section"><div class="wrap split">
   <h2>Why I’m building it</h2>
-  <div class="prose"><p>I kept finding out about gigs after they had happened or sold out. Following individual venues meant checking several sites and hoping I hadn’t missed an announcement.</p><p>GigRadar brings that information together. The aim is simple: browse events, find venues on a map and follow the places and artists I care about.</p></div>
+  <div class="prose"><p>I kept hearing about gigs after they had happened or sold out. Following individual venues meant checking several websites and remembering to return to them.</p><p>GigRadar brings those listings together, with a map and a way to follow venues and artists.</p><p>The original requirement was to go to more gigs.</p></div>
 </div></section>
 <section class="section"><div class="wrap split">
-  <h2>The data work</h2>
-  <div class="prose"><p>The difficult part is keeping event information consistent across sources. Dates change, the same gig appears in more than one place, and a missing listing doesn’t necessarily mean an event is cancelled.</p><p>I’m working on source ingestion, event identity and retaining the evidence behind each update. A ticket-status label should be traceable to a source.</p></div>
+  <h2>Getting the listings straight</h2>
+  <div class="prose"><p>The same event can appear under different names, with conflicting times and ticket information. I’m working on matching those records, retaining their sources and distinguishing genuine changes from gaps in the data.</p><p>A missing listing doesn’t necessarily mean a cancelled gig. Keeping that distinction clear is part of making the information useful.</p></div>
 </div></section>
 <section class="section"><div class="wrap split">
-  <h2>What exists now</h2>
-  <div>
-    <dl class="fields">
-      <dt>Public demo</dt>
-      <dd>A static event snapshot for trying the interface without exposing the development system or running collection jobs online.</dd>
-      <dt>Development app</dt>
-      <dd>Event, venue and artist records, alongside map, saved and favourites views.</dd>
-      <dt>Data collection</dt>
-      <dd>Manual local pulls through configured source adapters, followed by normalisation, identity checks and snapshot export.</dd>
-      <dt>Still in progress</dt>
-      <dd>Broader source coverage, evidence-based urgency labels and interface polish. Scheduled collection comes later.</dd>
-    </dl>
-  </div>
+  <h2>The public demo</h2>
+  <div class="prose"><p>The demo uses a dated snapshot of the listings. It lets you explore the interface while I develop the collection and review tools locally.</p><p>Saved gigs and follows stay in your browser. Dates, prices and availability may have changed since the snapshot; check the venue or ticket seller before making plans.</p><p><a class="btn" href="https://gigapp.pages.dev/" target="_blank" rel="noopener">Open demo ↗</a></p></div>
 </div></section>
 <section class="section"><div class="wrap split">
-  <h2>One useful decision</h2>
-  <div class="prose"><p>I separated the public demo from the development application. Collection and validation can change while I work out which sources are reliable; the public site receives a curated snapshot instead.</p></div>
-</div></section>
-<section class="section"><div class="wrap split">
-  <h2>What I’ve learned</h2>
-  <div class="prose"><p>The interface is the easy part. The real work is deciding when two listings describe the same event, recording where each fact came from and handling a source disappearing without losing the history.</p></div>
-</div></section>
-<section class="section"><div class="wrap split">
-  <h2>Try the demo</h2>
-  <div class="prose"><p>The public site is a preview using snapshot data. Check the venue or ticket seller before relying on an event listing.</p><p><a class="btn" href="https://gigapp.pages.dev/" target="_blank" rel="noopener">Open public demo ↗</a></p></div>
+  <h2>Still being worked on</h2>
+  <div class="prose"><p>I’m improving source coverage, resolving awkward duplicates and refining the browsing experience. Collection stays manual while I work out which sources I can rely on.</p></div>
 </div></section>
 </main>
 
