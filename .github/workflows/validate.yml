@@ -1,4 +1,4 @@
-name: Validate
+name: validate
 
 on:
   push:
@@ -9,24 +9,26 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
-      - name: Checkout code
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: "22"
+          node-version: 20
+          cache: 'npm'
 
-      - name: Install HTMLHint
-        run: npm install -g htmlhint
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run HTML validity check
-        run: npx htmlhint "**/*.html" --config .htmlhintrc --ignore "portfolio/R/**,portfolio/misc/**,portfolio/python-notebooks/**,node_modules/**"
+      - name: Validate HTML structure & accessibility
+        run: npm run lint:html
 
-      - name: Link check
-        uses: lycheeverse/lychee-action@c053181aa0c3d17606addfe97a9075a32723548a # v1.9.3
+      - name: Verify all internal and external links
+        uses: lycheeverse/lychee-action@2b973e86ec7b1f5b8356a62429c679d505990264 # v2.3.0
         with:
-          args: --verbose --no-progress --exclude-mail --exclude '^data:' --exclude 'https://doi.org/' './**/*.html'
+          args: "--verbose --no-progress --max-concurrency 8 ./**/*.html"
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
