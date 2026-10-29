@@ -1,6 +1,4 @@
-name: Validate
-
-permissions: {}
+name: validate
 
 on:
   push:
@@ -11,29 +9,26 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          persist-credentials: false
+          node-version: 20
+          cache: 'npm'
 
-      - name: Setup Node.js
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate HTML structure & accessibility
+        run: npm run lint:html
+
+      - name: Verify all internal and external links
+        uses: lycheeverse/lychee-action@2b973e86ec7b1f5b8356a62429c679d505990264 # v2.3.0
         with:
-          node-version: "22"
-          package-manager-cache: false
-
-      - name: Install HTMLHint
-        run: npm install --global --ignore-scripts --no-audit --no-fund htmlhint@1.9.2
-
-      - name: Run HTML validity check
-        run: htmlhint "**/*.html" --config .htmlhintrc --ignore "portfolio/R/**,portfolio/misc/**,portfolio/python-notebooks/**,node_modules/**"
-
-      - name: Link check
-        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
-        with:
-          # Preserve the previous action's advisory link-check behaviour.
-          fail: false
-          args: --verbose --no-progress --include-mail=false --exclude '^data:' --exclude 'https://doi.org/' './**/*.html'
+          args: "--verbose --no-progress --max-concurrency 8 ./**/*.html"
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
